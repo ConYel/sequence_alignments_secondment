@@ -1,0 +1,130 @@
+---
+title: "The journey of Multiple Sequence Alignment"
+subtitle: "Diving in the Notum"
+author: "Constantinos Yeles (Konstantinos Geles)"
+date: "First version: Tue 26/07/2021, Latest update: `r format(Sys.time(), '%a %d/%b/%Y')`"
+output:
+  pdf_document:
+    toc: yes
+    toc_depth: 3
+  html_document:
+    toc: yes
+    toc_depth: 3
+    theme: paper 
+editor_options:
+  chunk_output_type: console
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+```
+
+# Blast alignment
+First we need to download the fasta sequence and the database from
+dropbox? Maybe can be uploaded later to zenodo 
+(probably I will have more context to add later). 
+
+We will use local blast run on docker as the [link](https://faculty.virginia.edu/wrpearson/fasta/) wasn't working.
+
+```{bash}
+# get the docker and run
+docker pull ncbi/blast
+docker run --rm -ti -v $(pwd):/home/my_data  ncbi/blast
+# move inside /home dir of the container
+cd /home
+
+# create a folder for the ouput of the blast database and unzip the fasta sequences
+mkdir my_data/some_species_blast_db
+gunzip my_data/oma_db.gz 
+
+# make a blast database 
+makeblastdb  -dbtype "prot" -in "my_data/oma_db" -input_type "fasta" -out "my_data/some_species_blast_db/blast_oma.db" -logfile "my_data/some_species_blast_db/logfile"
+
+# blast the sequence of Notum
+blastp -query "my_data/dm_notum.fasta"  -db "my_data/some_species_blast_db/blast_oma.db" -out "my_data/results_blast.txt" -outfmt "7 delim=@ qseqid qlen sseqid slen qstart qend sstart send qseq sseq evalue bitscore score length pident nident mismatch positive ppos frames qframe sframe sstrand qcovs qcovhsp qcovus" -num_threads 4
+```
+
+# Import results into R
+```{r include=FALSE, eval = TRUE}
+# load libraries
+suppressPackageStartupMessages({
+library(tidyverse)
+library(plyranges)
+library(vroom)
+  })
+
+# function to import the results
+read_blast_tab_format <- function(blast_file, delim = "@"){
+  fourth_line_fields <- blast_file %>% 
+  vroom_lines() %>% 
+  .[4] %>% 
+  str_remove("# Fields: ") %>% 
+  str_split(", ") %>% 
+  unlist %>% 
+  str_replace_all(" |/","_") %>% 
+  str_replace("%","percent") %>% 
+  str_remove("\\.")
+  
+  blast_sequences <- blast_file %>% 
+  read_delim(delim = delim, # here it should be made clear that the delim could be something else
+             comment = "#", 
+             col_names = fourth_line_fields) %>% 
+  mutate(strand = ifelse(subject_strand == "minus","-","+") %>% as_factor()) %>% 
+  mutate(
+         start = ifelse(strand == "-", yes = s_end, no = s_start),
+         end = ifelse(strand == "-", yes = s_start,no = s_end),
+         seqnames = subject_id) %>% 
+    as_granges()
+  
+  return(blast_sequences)
+}
+# import the results
+
+notum_blst <- read_blast_tab_format(blast_file = "results_blast.txt")
+```
+
+# print an example of the results 
+```{r eval = TRUE}
+notum_blst %>% arrange(evalue)
+```
+
+# get the 10 top hits identifiers
+```{r eval = TRUE}
+top10_seqs <- notum_blst %>% arrange(evalue) %>% head(11) %>%  .$subject_id
+```
+
+# import fasta db
+import the sequences and filter them for the 10 best hits from the previous results in order to make the multiple sequence alignments
+```{r eval = TRUE}
+suppressPackageStartupMessages({
+library(Biostrings)
+  })
+fasta_db <- readAAStringSet("oma_db")
+
+# I didn't consider that the names will be cut in the db creation thus I have to manipulate them to work properly for the filtering
+names_fst_db <- fasta_db  %>% names %>% str_remove(" .+")
+ 
+# filter for the top 10
+fasta_db_fil <- fasta_db[names_fst_db %in% top10_seqs]
+```
+
+# Multiple Sequence Alignment
+I found two packages in R implementing various algorithms. 
+One is [msa](https://www.bioconductor.org/packages/release/bioc/html/msa.html) and the other [DECIPHER](https://www.bioconductor.org/packages/release/bioc/html/DECIPHER.html)
+for now I will try msa
+```{r eval = TRUE}
+suppressPackageStartupMessages({
+library(msa)
+  })
+myFirstAlignment <- msa(fasta_db_fil)
+```
+
+# print the MSA
+```{r eval = TRUE}
+myFirstAlignment
+```
+
+
+
+
