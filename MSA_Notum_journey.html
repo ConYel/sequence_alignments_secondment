@@ -180,6 +180,8 @@ pre code {
 <li><a href="#import-fasta-db">import fasta db</a></li>
 <li><a href="#multiple-sequence-alignment">Multiple Sequence Alignment</a></li>
 <li><a href="#print-the-msa">print the MSA</a></li>
+<li><a href="#get-significant-sequences">get significant sequences</a></li>
+<li><a href="#perform-msa-with-muscle">perform MSA with MUSCLE</a></li>
 </ul>
 </div>
 
@@ -306,7 +308,7 @@ blastp -query &quot;my_data/dm_notum.fasta&quot;  -db &quot;my_data/some_species
 </div>
 <div id="get-the-10-top-hits-identifiers" class="section level1">
 <h1>get the 10 top hits identifiers</h1>
-<pre class="r"><code>top10_seqs &lt;- notum_blst %&gt;% arrange(evalue) %&gt;% head(11) %&gt;%  .$subject_id</code></pre>
+<pre class="r"><code>top10_seqs &lt;- notum_blst %&gt;% arrange(evalue) %&gt;% head(11) %&gt;% .$subject_id</code></pre>
 </div>
 <div id="import-fasta-db" class="section level1">
 <h1>import fasta db</h1>
@@ -327,8 +329,11 @@ fasta_db_fil &lt;- fasta_db[names_fst_db %in% top10_seqs]</code></pre>
 <p>I found two packages in R implementing various algorithms. One is <a href="https://www.bioconductor.org/packages/release/bioc/html/msa.html">msa</a> and the other <a href="https://www.bioconductor.org/packages/release/bioc/html/DECIPHER.html">DECIPHER</a> for now I will try msa</p>
 <pre class="r"><code>suppressPackageStartupMessages({
 library(msa)
-  })
-myFirstAlignment &lt;- msa(fasta_db_fil)</code></pre>
+library(bios2mds)
+  })</code></pre>
+<pre><code>## Warning in rgl.init(initValue, onlyNULL): RGL: unable to open X11 display</code></pre>
+<pre><code>## Warning: &#39;rgl.init&#39; failed, running with &#39;rgl.useNULL = TRUE&#39;.</code></pre>
+<pre class="r"><code>myFirstAlignment &lt;- msa(fasta_db_fil)</code></pre>
 <pre><code>## use default substitution matrix</code></pre>
 </div>
 <div id="print-the-msa" class="section level1">
@@ -545,6 +550,20 @@ myFirstAlignment &lt;- msa(fasta_db_fil)</code></pre>
 ## [10] --             Ep|XP_020912206.1...
 ## [11] --             Nv|NVE7485
 ##  Con --             Consensus</code></pre>
+</div>
+<div id="get-significant-sequences" class="section level1">
+<h1>get significant sequences</h1>
+<pre class="r"><code>sign_seqs &lt;- notum_blst %&gt;% filter(evalue &lt; 0.05) %&gt;% .$subject_id
+
+# filter for the significant sequences
+fasta_db_fil &lt;- fasta_db[names_fst_db %in% sign_seqs]</code></pre>
+</div>
+<div id="perform-msa-with-muscle" class="section level1">
+<h1>perform MSA with MUSCLE</h1>
+<pre class="r"><code>sign_seqs_muscle &lt;- msaMuscle(fasta_db_fil)
+sign_seqs_bio2mds &lt;- msa::msaConvert(sign_seqs_muscle, type = &quot;bios2mds::align&quot;)
+export.fasta(sign_seqs_bio2mds, outfile = &quot;sign_seqs_msa_muscle.fa&quot;, ncol = 60, open = &quot;w&quot;)</code></pre>
+<p>check the sign_seqs_msa_muscle.fa file for the alignments</p>
 </div>
 
 

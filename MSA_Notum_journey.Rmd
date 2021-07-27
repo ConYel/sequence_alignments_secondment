@@ -91,7 +91,7 @@ notum_blst %>% arrange(evalue)
 
 # get the 10 top hits identifiers
 ```{r eval = TRUE}
-top10_seqs <- notum_blst %>% arrange(evalue) %>% head(11) %>%  .$subject_id
+top10_seqs <- notum_blst %>% arrange(evalue) %>% head(11) %>% .$subject_id
 ```
 
 # import fasta db
@@ -116,6 +116,7 @@ for now I will try msa
 ```{r eval = TRUE}
 suppressPackageStartupMessages({
 library(msa)
+library(bios2mds)
   })
 myFirstAlignment <- msa(fasta_db_fil)
 ```
@@ -125,6 +126,21 @@ myFirstAlignment <- msa(fasta_db_fil)
 print(myFirstAlignment, show="complete")
 ```
 
+# get significant sequences
+```{r eval = TRUE}
+sign_seqs <- notum_blst %>% filter(evalue < 0.05) %>% .$subject_id
+
+# filter for the significant sequences
+fasta_db_fil <- fasta_db[names_fst_db %in% sign_seqs]
+```
+
+# perform MSA with MUSCLE
+```{r}
+sign_seqs_muscle <- msaMuscle(fasta_db_fil)
+sign_seqs_bio2mds <- msa::msaConvert(sign_seqs_muscle, type = "bios2mds::align")
+export.fasta(sign_seqs_bio2mds, outfile = "sign_seqs_msa_muscle.fa", ncol = 60, open = "w")
+```
+check the sign_seqs_msa_muscle.fa file for the alignments
 
 
 
