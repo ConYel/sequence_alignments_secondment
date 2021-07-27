@@ -4,13 +4,13 @@ subtitle: "Diving in the Notum"
 author: "Constantinos Yeles (Konstantinos Geles)"
 date: "First version: Tue 26/07/2021, Latest update: `r format(Sys.time(), '%a %d/%b/%Y')`"
 output:
-  pdf_document:
-    toc: yes
-    toc_depth: 3
   html_document:
     toc: yes
     toc_depth: 3
     theme: paper 
+  pdf_document:
+    toc: yes
+    toc_depth: 3
 editor_options:
   chunk_output_type: console
 ---
@@ -122,7 +122,7 @@ myFirstAlignment <- msa(fasta_db_fil)
 
 # print the MSA
 ```{r eval = TRUE}
-myFirstAlignment
+print(myFirstAlignment, show="complete")
 ```
 
 
