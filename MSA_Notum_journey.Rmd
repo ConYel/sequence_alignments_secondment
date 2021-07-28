@@ -84,17 +84,17 @@ read_blast_tab_format <- function(blast_file, delim = "@"){
 notum_blst <- read_blast_tab_format(blast_file = "results_blast.txt")
 ```
 
-# print an example of the results 
+## print an example of the results 
 ```{r eval = TRUE}
 notum_blst %>% arrange(evalue)
 ```
 
-# get the 10 top hits identifiers
+## get the 10 top hits identifiers
 ```{r eval = TRUE}
 top10_seqs <- notum_blst %>% arrange(evalue) %>% head(11) %>% .$subject_id
 ```
 
-# import fasta db
+## import fasta file with all sequences
 import the sequences and filter them for the 10 best hits from the previous results in order to make the multiple sequence alignments
 ```{r eval = TRUE}
 suppressPackageStartupMessages({
@@ -121,12 +121,12 @@ library(bios2mds)
 myFirstAlignment <- msa(fasta_db_fil)
 ```
 
-# print the MSA
+## print the MSA
 ```{r eval = TRUE}
 print(myFirstAlignment, show="complete")
 ```
 
-# get significant sequences
+## get significant sequences
 ```{r eval = TRUE}
 sign_seqs <- notum_blst %>% filter(evalue < 0.05) %>% .$subject_id
 
@@ -134,7 +134,7 @@ sign_seqs <- notum_blst %>% filter(evalue < 0.05) %>% .$subject_id
 fasta_db_fil <- fasta_db[names_fst_db %in% sign_seqs]
 ```
 
-# perform MSA with MUSCLE
+## perform MSA with MUSCLE
 ```{r}
 sign_seqs_muscle <- msaMuscle(fasta_db_fil)
 sign_seqs_bio2mds <- msa::msaConvert(sign_seqs_muscle, type = "bios2mds::align")
@@ -142,5 +142,15 @@ export.fasta(sign_seqs_bio2mds, outfile = "sign_seqs_msa_muscle.fa", ncol = 60, 
 ```
 check the sign_seqs_msa_muscle.fa file for the alignments
 
+# IQTREE
+```{bash}
+docker run --rm -ti -v $(pwd):/home/my_data staphb/iqtree
+
+cd home
+mkdir my_data/my_first_tree
+
+iqtree -s my_data/sign_seqs_msa_muscle.fa -nt 6 -mset LG -pre my_data/my_first_tree/my_tree
+
+```
 
 
