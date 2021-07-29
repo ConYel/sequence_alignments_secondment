@@ -1,0 +1,398 @@
+IQ-TREE multicore version 1.6.7 for Linux 64-bit built Aug 23 2018
+Developed by Bui Quang Minh, Nguyen Lam Tung, Olga Chernomor,
+Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
+
+Host:    59cfcd301902 (AVX, 251 GB RAM)
+Command: iqtree -s my_data/hmmsearch_msa_muscle.fa -nt 8 -mset LG -pre my_data/my_hmmsearch_tree/my_hmmsearch_tree
+Seed:    336391 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Thu Jul 29 08:14:43 2021
+Kernel:  AVX - 8 threads (32 CPU cores detected)
+
+Reading alignment file my_data/hmmsearch_msa_muscle.fa ... Fasta format detected
+Alignment most likely contains protein sequences
+WARNING: 1 sites contain only gaps or ambiguous characters.
+Alignment has 105 sequences with 6388 columns, 3989 distinct patterns
+1630 parsimony-informative, 2862 singleton sites, 1896 constant sites
+WARNING: Some sequence names are changed as follows:
+s_ros|PTSG_06049T0 -> s_ros_PTSG_06049T0
+m_lei|ML085718a -> m_lei_ML085718a
+Bf|XP_002590392.1 -> Bf_XP_002590392.1
+Bf|XP_002590393.1 -> Bf_XP_002590393.1
+Pa|g17936.t1 -> Pa_g17936.t1
+La|919070121 -> La_919070121
+Aq|XP_011405404.1 -> Aq_XP_011405404.1
+Aq|XP_019854868.1 -> Aq_XP_019854868.1
+Aq|XP_011408782.2 -> Aq_XP_011408782.2
+Aq|XP_003387386.1 -> Aq_XP_003387386.1
+Aq|XP_011404609.2 -> Aq_XP_011404609.2
+Aq|XP_019863993.1 -> Aq_XP_019863993.1
+Aq|XP_019857266.1 -> Aq_XP_019857266.1
+Aq|XP_019857269.1 -> Aq_XP_019857269.1
+Aq|XP_019854835.1 -> Aq_XP_019854835.1
+Bf|XP_002612627.1 -> Bf_XP_002612627.1
+m_vir|scaffold247.g15.t1 -> m_vir_scaffold247.g15.t1
+a_aur|scaffold182.g31.t1 -> a_aur_scaffold182.g31.t1
+Hv|828208111 -> Hv_828208111
+c_hem|XLOC_042173 -> c_hem_XLOC_042173
+Bf|XP_002612628.1 -> Bf_XP_002612628.1
+Ep|XP_020906172.1 -> Ep_XP_020906172.1
+Cg|762095104 -> Cg_762095104
+Ep|XP_020893796.1 -> Ep_XP_020893796.1
+Ac|524912589 -> Ac_524912589
+Nv|NVE541 -> Nv_NVE541
+m_vir|scaffold64.g63.t1 -> m_vir_scaffold64.g63.t1
+Ad|XP_015754935.1 -> Ad_XP_015754935.1
+Of|1176059872 -> Of_1176059872
+Pd|XP_027036622.1 -> Pd_XP_027036622.1
+c_hem|XLOC_013173 -> c_hem_XLOC_013173
+a_aur|scaffold81.g70.t1 -> a_aur_scaffold81.g70.t1
+d_gig|g8803.t1 -> d_gig_g8803.t1
+m_vir|scaffold359.g9.t1 -> m_vir_scaffold359.g9.t1
+Nv|NVE2913 -> Nv_NVE2913
+Ep|XP_020899744.1 -> Ep_XP_020899744.1
+Ad|XP_015773425.1 -> Ad_XP_015773425.1
+Ad|XP_015779438.1 -> Ad_XP_015779438.1
+Of|1176115448 -> Of_1176115448
+Pd|XP_027060544.1 -> Pd_XP_027060544.1
+Sp|115620532 -> Sp_115620532
+Of|1176090797 -> Of_1176090797
+s_ros|PTSG_05723T0 -> s_ros_PTSG_05723T0
+Bf|XP_002603262.1 -> Bf_XP_002603262.1
+Bf|XP_002603261.1 -> Bf_XP_002603261.1
+d_gig|g12741.t1 -> d_gig_g12741.t1
+Ad|XP_015755418.1 -> Ad_XP_015755418.1
+Pd|XP_027054066.1 -> Pd_XP_027054066.1
+Of|1176072233 -> Of_1176072233
+Of|1176072235 -> Of_1176072235
+Ep|XP_020906385.1 -> Ep_XP_020906385.1
+Nv|NVE1464 -> Nv_NVE1464
+c_hem|XLOC_044658 -> c_hem_XLOC_044658
+m_vir|scaffold96.g23.t1 -> m_vir_scaffold96.g23.t1
+a_aur|scaffold105.g21.t1 -> a_aur_scaffold105.g21.t1
+m_bre|MONBRDRAFT_30786T0 -> m_bre_MONBRDRAFT_30786T0
+s_ros|PTSG_00161T0 -> s_ros_PTSG_00161T0
+m_bre|MONBRDRAFT_30195T0 -> m_bre_MONBRDRAFT_30195T0
+s_ros|PTSG_08223T0 -> s_ros_PTSG_08223T0
+m_bre|MONBRDRAFT_33119T0 -> m_bre_MONBRDRAFT_33119T0
+m_bre|MONBRDRAFT_38375T0 -> m_bre_MONBRDRAFT_38375T0
+m_bre|MONBRDRAFT_01630T0 -> m_bre_MONBRDRAFT_01630T0
+m_bre|MONBRDRAFT_02156T0 -> m_bre_MONBRDRAFT_02156T0
+Pd|XP_027041420.1 -> Pd_XP_027041420.1
+Pd|XP_027041268.1 -> Pd_XP_027041268.1
+Bf|XP_002592010.1 -> Bf_XP_002592010.1
+Sk|291232985 -> Sk_291232985
+Sk|585674523 -> Sk_585674523
+m_bre|MONBRDRAFT_11917T0 -> m_bre_MONBRDRAFT_11917T0
+Pc|957856495 -> Pc_957856495
+m_lei|ML06811a -> m_lei_ML06811a
+Aq|XP_011406129.2 -> Aq_XP_011406129.2
+m_vir|scaffold277.g4.t1 -> m_vir_scaffold277.g4.t1
+Hv|828224578 -> Hv_828224578
+c_hem|XLOC_003519 -> c_hem_XLOC_003519
+a_aur|scaffold109.g50.t1 -> a_aur_scaffold109.g50.t1
+Aq|XP_011403724.2 -> Aq_XP_011403724.2
+Of|1176059555 -> Of_1176059555
+Pd|XP_027046156.1 -> Pd_XP_027046156.1
+Pd|XP_027046128.1 -> Pd_XP_027046128.1
+Of|1176123894 -> Of_1176123894
+Pd|XP_027046191.1 -> Pd_XP_027046191.1
+Ct|ELT96642.1 -> Ct_ELT96642.1
+p_nak|g35612.t1 -> p_nak_g35612.t1
+s_ros|PTSG_10843T0 -> s_ros_PTSG_10843T0
+m_bre|MONBRDRAFT_25774T0 -> m_bre_MONBRDRAFT_25774T0
+Xb|g3677.t1 -> Xb_g3677.t1
+Dm|Notum -> Dm_Notum
+Sk|269784925 -> Sk_269784925
+Sp|780014582 -> Sp_780014582
+Cg|762161189 -> Cg_762161189
+Pa|g11818.t1 -> Pa_g11818.t1
+La|919081898 -> La_919081898
+Ct|ELT91091.1 -> Ct_ELT91091.1
+Bf|XP_002599183.1 -> Bf_XP_002599183.1
+Hs|NOTUM -> Hs_NOTUM
+c_hem|XLOC_017925 -> c_hem_XLOC_017925
+Hv|828225342 -> Hv_828225342
+a_aur|scaffold493.g5.t1 -> a_aur_scaffold493.g5.t1
+m_vir|scaffold286.g18.t1 -> m_vir_scaffold286.g18.t1
+d_gig|g110.t1 -> d_gig_g110.t1
+Of|1176098841 -> Of_1176098841
+Pd|XP_027051607.1 -> Pd_XP_027051607.1
+Ep|XP_020912206.1 -> Ep_XP_020912206.1
+Nv|NVE7485 -> Nv_NVE7485
+
+                          Gap/Ambiguity  Composition  p-value
+   1  s_ros_PTSG_06049T0         91.88%    failed      0.00%
+   2  m_lei_ML085718a            89.67%    failed      0.07%
+   3  Bf_XP_002590392.1          93.88%    failed      0.02%
+   4  Bf_XP_002590393.1          93.32%    failed      0.01%
+   5  Pa_g17936.t1               93.03%    passed     15.66%
+   6  La_919070121               92.86%    failed      2.02%
+   7  Aq_XP_011405404.1          94.13%    passed      5.18%
+   8  Aq_XP_019854868.1          94.08%    failed      2.13%
+   9  Aq_XP_011408782.2          95.49%    failed      2.89%
+  10  Aq_XP_003387386.1          94.18%    passed     13.23%
+  11  Aq_XP_011404609.2          94.05%    passed     13.52%
+  12  Aq_XP_019863993.1          97.90%    passed     48.36%
+  13  Aq_XP_019857266.1          86.47%    failed      1.44%
+  14  Aq_XP_019857269.1          96.06%    failed      0.28%
+  15  Aq_XP_019854835.1          94.18%    passed      5.08%
+  16  Bf_XP_002612627.1          93.47%    failed      0.19%
+  17  m_vir_scaffold247.g15.t1   64.86%    failed      0.00%
+  18  a_aur_scaffold182.g31.t1   53.65%    failed      0.00%
+  19  Hv_828208111               87.76%    failed      0.00%
+  20  c_hem_XLOC_042173          96.15%    passed     76.48%
+  21  Bf_XP_002612628.1          92.60%    failed      0.01%
+  22  Ep_XP_020906172.1          95.40%    passed     94.44%
+  23  Cg_762095104               93.13%    passed      9.95%
+  24  Ep_XP_020893796.1          88.21%    failed      0.00%
+  25  Ac_524912589               93.43%    failed      3.66%
+  26  Nv_NVE541                  89.39%    failed      0.00%
+  27  m_vir_scaffold64.g63.t1    93.38%    failed      0.46%
+  28  Ad_XP_015754935.1          86.73%    failed      0.00%
+  29  Of_1176059872              85.91%    failed      0.00%
+  30  Pd_XP_027036622.1          85.79%    failed      0.00%
+  31  c_hem_XLOC_013173          85.63%    failed      0.00%
+  32  a_aur_scaffold81.g70.t1    86.18%    failed      0.00%
+  33  d_gig_g8803.t1             65.09%    failed      0.00%
+  34  m_vir_scaffold359.g9.t1    86.71%    failed      0.00%
+  35  Nv_NVE2913                 92.75%    passed     12.70%
+  36  Ep_XP_020899744.1          92.52%    passed     18.43%
+  37  Ad_XP_015773425.1          92.52%    passed      5.93%
+  38  Ad_XP_015779438.1          96.48%    passed     16.03%
+  39  Of_1176115448              92.49%    passed     10.02%
+  40  Pd_XP_027060544.1          92.50%    passed     10.35%
+  41  Sp_115620532               91.14%    failed      0.02%
+  42  Of_1176090797              97.26%    failed      0.80%
+  43  s_ros_PTSG_05723T0         75.16%    failed      0.00%
+  44  Bf_XP_002603262.1          91.50%    failed      0.00%
+  45  Bf_XP_002603261.1          94.27%    failed      0.04%
+  46  d_gig_g12741.t1            93.22%    passed     68.57%
+  47  Ad_XP_015755418.1          96.70%    passed     55.96%
+  48  Pd_XP_027054066.1          92.36%    passed     11.44%
+  49  Of_1176072233              94.80%    passed     28.59%
+  50  Of_1176072235              97.56%    passed     82.18%
+  51  Ep_XP_020906385.1          92.53%    passed     23.98%
+  52  Nv_NVE1464                 95.49%    passed     13.31%
+  53  c_hem_XLOC_044658          92.20%    passed     56.00%
+  54  m_vir_scaffold96.g23.t1    92.60%    passed     29.51%
+  55  a_aur_scaffold105.g21.t1   92.00%    failed      0.03%
+  56  m_bre_MONBRDRAFT_30786T0   83.28%    failed      0.00%
+  57  s_ros_PTSG_00161T0         92.81%    failed      0.76%
+  58  m_bre_MONBRDRAFT_30195T0   82.42%    failed      0.00%
+  59  s_ros_PTSG_08223T0         93.75%    failed      0.00%
+  60  m_bre_MONBRDRAFT_33119T0   93.44%    failed      0.00%
+  61  m_bre_MONBRDRAFT_38375T0   90.59%    failed      0.00%
+  62  m_bre_MONBRDRAFT_01630T0   94.91%    failed      0.03%
+  63  m_bre_MONBRDRAFT_02156T0   95.85%    failed      0.26%
+  64  Pd_XP_027041420.1          92.96%    failed      0.76%
+  65  Pd_XP_027041268.1          94.77%    failed      0.18%
+  66  Bf_XP_002592010.1          91.50%    failed      0.14%
+  67  Sk_291232985               92.94%    failed      0.33%
+  68  Sk_585674523               93.49%    passed      9.59%
+  69  m_bre_MONBRDRAFT_11917T0   86.90%    failed      0.00%
+  70  Pc_957856495               93.79%    failed      0.00%
+  71  m_lei_ML06811a             95.34%    passed     28.70%
+  72  Aq_XP_011406129.2          74.34%    failed      0.00%
+  73  m_vir_scaffold277.g4.t1    78.41%    failed      0.00%
+  74  Hv_828224578               65.83%    failed      0.00%
+  75  c_hem_XLOC_003519          66.88%    failed      0.00%
+  76  a_aur_scaffold109.g50.t1   86.79%    failed      0.00%
+  77  Aq_XP_011403724.2          85.50%    failed      0.00%
+  78  Of_1176059555              81.97%    failed      0.00%
+  79  Pd_XP_027046156.1          82.29%    failed      0.00%
+  80  Pd_XP_027046128.1          76.08%    failed      0.00%
+  81  Of_1176123894              94.22%    failed      0.01%
+  82  Pd_XP_027046191.1          76.38%    failed      0.00%
+  83  Ct_ELT96642.1              93.82%    passed     12.69%
+  84  p_nak_g35612.t1            92.80%    passed      6.01%
+  85  s_ros_PTSG_10843T0         94.90%    failed      0.04%
+  86  m_bre_MONBRDRAFT_25774T0   94.22%    passed      5.01%
+  87  Xb_g3677.t1                91.61%    failed      0.01%
+  88  Dm_Notum                   89.50%    failed      0.00%
+  89  Sk_269784925               92.05%    passed     19.42%
+  90  Sp_780014582               80.67%    failed      0.00%
+  91  Cg_762161189               90.87%    failed      0.00%
+  92  Pa_g11818.t1               91.14%    failed      1.05%
+  93  La_919081898               91.25%    passed     14.13%
+  94  Ct_ELT91091.1              92.77%    passed     47.55%
+  95  Bf_XP_002599183.1          92.38%    failed      3.89%
+  96  Hs_NOTUM                   92.24%    failed      0.04%
+  97  c_hem_XLOC_017925          92.94%    passed     38.52%
+  98  Hv_828225342               93.02%    passed     13.94%
+  99  a_aur_scaffold493.g5.t1    92.03%    failed      0.13%
+ 100  m_vir_scaffold286.g18.t1   92.16%    failed      1.20%
+ 101  d_gig_g110.t1              92.69%    passed     12.10%
+ 102  Of_1176098841              93.21%    failed      1.35%
+ 103  Pd_XP_027051607.1          93.14%    passed     86.58%
+ 104  Ep_XP_020912206.1          92.85%    passed      6.32%
+ 105  Nv_NVE7485                 92.61%    passed      9.25%
+WARNING: 105 sequences contain more than 50% gaps/ambiguity
+****  TOTAL                      89.76%  67 sequences failed composition chi2 test (p-value<5%; df=19)
+
+
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.221 seconds
+NOTE: ModelFinder requires 650 MB RAM!
+ModelFinder will test 26 protein models (sample size: 6388) ...
+ No. Model         -LnL         df  AIC          AICc         BIC
+  1  LG            160254.043   207 320922.085   320936.019   322321.856
+  2  LG+I          160254.045   208 320924.089   320938.160   322330.622
+  3  LG+G4         155937.393   208 312290.785   312304.856   313697.318
+  4  LG+I+G4       155937.335   209 312292.670   312306.879   313705.965
+  5  LG+R2         156661.550   209 313741.100   313755.309   315154.395
+  6  LG+R3         155854.961   211 312131.922   312146.408   313558.741
+  7  LG+R4         155509.291   213 311444.582   311459.348   312884.926
+  8  LG+R5         155397.561   215 311225.121   311240.170   312678.989
+  9  LG+R6         155354.135   217 311142.270   311157.604   312609.662
+ 10  LG+R7         155332.878   219 311103.757   311119.379   312584.673
+ 11  LG+R8         155322.661   221 311087.323   311103.236   312581.764
+ 12  LG+R9         155290.751   223 311027.502   311043.710   312535.467
+ 13  LG+R10        155279.723   225 311009.445   311025.949   312530.935
+ 14  LG+F          160938.540   226 322329.080   322345.734   323857.332
+ 15  LG+F+I        160938.527   227 322331.054   322347.858   323866.068
+ 16  LG+F+G4       156673.077   227 313800.154   313816.958   315335.168
+ 17  LG+F+I+G4     156673.067   228 313802.133   313819.088   315343.910
+ 18  LG+F+R2       157341.757   228 315139.514   315156.469   316681.290
+ 19  LG+F+R3       156604.698   230 313669.397   313686.655   315224.697
+ 20  LG+F+R4       156238.366   232 312940.733   312958.298   314509.558
+ 21  LG+F+R5       156134.355   234 312736.710   312754.584   314319.059
+ 22  LG+F+R6       156096.068   236 312664.136   312682.322   314260.010
+ 23  LG+F+R7       156075.605   238 312627.211   312645.712   314236.609
+ 24  LG+F+R8       156048.118   240 312576.237   312595.056   314199.159
+ 25  LG+F+R9       156030.743   242 312545.487   312564.626   314181.933
+ 26  LG+F+R10      156020.385   244 312528.770   312548.233   314178.741
+Akaike Information Criterion:           LG+R10
+Corrected Akaike Information Criterion: LG+R10
+Bayesian Information Criterion:         LG+R10
+Best-fit model: LG+R10 chosen according to BIC
+
+All model information printed to my_data/my_hmmsearch_tree/my_hmmsearch_tree.model.gz
+CPU time for ModelFinder: 9442.005 seconds (2h:37m:22s)
+Wall-clock time for ModelFinder: 1195.988 seconds (0h:19m:55s)
+
+NOTE: 650 MB RAM (0 GB) is required!
+Estimate model parameters (epsilon = 0.100)
+1. Initial log-likelihood: -155473.808
+2. Current log-likelihood: -155345.084
+3. Current log-likelihood: -155331.328
+4. Current log-likelihood: -155325.641
+5. Current log-likelihood: -155322.289
+6. Current log-likelihood: -155320.066
+7. Current log-likelihood: -155318.452
+8. Current log-likelihood: -155317.242
+9. Current log-likelihood: -155316.306
+10. Current log-likelihood: -155315.656
+11. Current log-likelihood: -155315.090
+12. Current log-likelihood: -155314.567
+13. Current log-likelihood: -155314.064
+14. Current log-likelihood: -155313.572
+15. Current log-likelihood: -155313.084
+16. Current log-likelihood: -155312.602
+17. Current log-likelihood: -155311.970
+18. Current log-likelihood: -155311.252
+19. Current log-likelihood: -155310.326
+20. Current log-likelihood: -155308.025
+21. Current log-likelihood: -155304.568
+22. Current log-likelihood: -155300.385
+23. Current log-likelihood: -155295.973
+24. Current log-likelihood: -155291.902
+25. Current log-likelihood: -155288.583
+26. Current log-likelihood: -155286.150
+27. Current log-likelihood: -155284.402
+28. Current log-likelihood: -155283.145
+29. Current log-likelihood: -155282.196
+30. Current log-likelihood: -155281.437
+31. Current log-likelihood: -155280.943
+32. Current log-likelihood: -155280.528
+33. Current log-likelihood: -155280.197
+34. Current log-likelihood: -155279.933
+35. Current log-likelihood: -155279.804
+36. Current log-likelihood: -155279.687
+37. Current log-likelihood: -155279.582
+Optimal log-likelihood: -155279.441
+Site proportion and rates:  (0.010,0.031) (0.029,0.093) (0.079,0.168) (0.092,0.270) (0.092,0.407) (0.066,0.419) (0.069,0.487) (0.068,0.639) (0.083,0.797) (0.412,1.822)
+Parameters optimization took 37 rounds (298.809 sec)
+Computing ML distances based on estimated model parameters... 20.358 sec
+WARNING: Some pairwise ML distances are too long (saturated)
+Computing BIONJ tree...
+0.005 seconds
+Log-likelihood of BIONJ tree: -155928.679
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Generating 98 parsimony trees... 24.021 second
+Computing log-likelihood of 98 initial trees ... 83.161 seconds
+Current best score: -155279.441
+
+Do NNI search on 20 best initial trees
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 1: -155137.273
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 4: -155135.868
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 5: -155134.353
+Iteration 10 / LogL: -155135.147 / Time: 0h:9m:20s
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 13: -155133.465
+Iteration 20 / LogL: -155143.474 / Time: 0h:11m:20s
+Finish initializing candidate tree set (20)
+Current best tree score: -155133.465 / CPU time: 374.019
+Number of iterations: 20
+--------------------------------------------------------------------
+|               OPTIMIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 22: -155132.843
+Iteration 30 / LogL: -155132.962 / Time: 0h:12m:55s (0h:41m:0s left)
+Iteration 40 / LogL: -155133.927 / Time: 0h:14m:28s (0h:30m:26s left)
+Iteration 50 / LogL: -155133.330 / Time: 0h:16m:1s (0h:23m:33s left)
+Iteration 60 / LogL: -155134.458 / Time: 0h:17m:33s (0h:18m:26s left)
+Iteration 70 / LogL: -155133.131 / Time: 0h:19m:10s (0h:14m:26s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 78: -155132.462
+Iteration 80 / LogL: -155133.734 / Time: 0h:20m:53s (0h:25m:55s left)
+Iteration 90 / LogL: -155133.158 / Time: 0h:22m:20s (0h:22m:5s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 92: -155132.232
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 99: -155131.588
+Iteration 100 / LogL: -155132.366 / Time: 0h:24m:10s (0h:24m:10s left)
+Iteration 110 / LogL: -155141.818 / Time: 0h:25m:40s (0h:20m:57s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 115: -155131.353
+Iteration 120 / LogL: -155132.831 / Time: 0h:27m:20s (0h:21m:49s left)
+Iteration 130 / LogL: -155142.098 / Time: 0h:29m:0s (0h:19m:6s left)
+Iteration 140 / LogL: -155132.955 / Time: 0h:30m:41s (0h:16m:33s left)
+Iteration 150 / LogL: -155132.440 / Time: 0h:32m:9s (0h:14m:1s left)
+Iteration 160 / LogL: -155133.043 / Time: 0h:33m:41s (0h:11m:39s left)
+Iteration 170 / LogL: -155136.263 / Time: 0h:35m:16s (0h:9m:23s left)
+Iteration 180 / LogL: -155133.280 / Time: 0h:36m:49s (0h:7m:12s left)
+Iteration 190 / LogL: -155135.495 / Time: 0h:38m:22s (0h:5m:4s left)
+Iteration 200 / LogL: -155138.042 / Time: 0h:39m:54s (0h:3m:0s left)
+Iteration 210 / LogL: -155131.755 / Time: 0h:41m:28s (0h:0m:59s left)
+TREE SEARCH COMPLETED AFTER 216 ITERATIONS / Time: 0h:42m:20s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -155131.353
+Optimal log-likelihood: -155131.345
+Site proportion and rates:  (0.010,0.031) (0.026,0.091) (0.077,0.168) (0.094,0.270) (0.092,0.409) (0.067,0.452) (0.073,0.498) (0.062,0.629) (0.085,0.812) (0.415,1.802)
+Parameters optimization took 1 rounds (2.747 sec)
+BEST SCORE FOUND : -155131.345
+Total tree length: 318.867
+
+Total number of iterations: 216
+CPU time used for tree search: 17605.157 sec (4h:53m:25s)
+Wall-clock time used for tree search: 2233.885 sec (0h:37m:13s)
+Total CPU time used: 20058.587 sec (5h:34m:18s)
+Total wall-clock time used: 2543.389 sec (0h:42m:23s)
+
+Analysis results written to: 
+  IQ-TREE report:                my_data/my_hmmsearch_tree/my_hmmsearch_tree.iqtree
+  Maximum-likelihood tree:       my_data/my_hmmsearch_tree/my_hmmsearch_tree.treefile
+  Likelihood distances:          my_data/my_hmmsearch_tree/my_hmmsearch_tree.mldist
+  Screen log file:               my_data/my_hmmsearch_tree/my_hmmsearch_tree.log
+
+Date and Time: Thu Jul 29 09:17:02 2021

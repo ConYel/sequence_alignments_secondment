@@ -153,4 +153,144 @@ iqtree -s my_data/sign_seqs_msa_muscle.fa -nt 6 -mset LG -pre my_data/my_first_t
 
 ```
 
+# Following the "Estimating phylogenetic trees with phangorn"
+```{r}
+library(ape)
+library(phangorn)
+```
+## Distance based methods
+
+### UPGMA
+```{r}
+sign_seqs_phyDat <- as.phyDat(sign_seqs_muscle, type = "AA")
+
+dm  <- dist.ml(sign_seqs_phyDat)
+
+treeUPGMA  <- upgma(dm)
+
+treeNJ  <- NJ(dm)
+
+plot(treeUPGMA, main="UPGMA")
+
+plot(treeNJ, "unrooted", main="NJ")
+```
+
+### Bootstrap
+```{r}
+fun <- function(x) upgma(dist.ml(x))
+
+bs_upgma <- bootstrap.phyDat(sign_seqs_phyDat,  fun)
+
+#bs_upgma <- bootstrap.phyDat(sign_seqs_phyDat,  \(x){dist.ml(x) |> upgma})
+
+plotBS(treeUPGMA, bs_upgma, main="UPGMA")
+```
+
+### Parsimony
+```{r}
+parsimony(treeUPGMA, sign_seqs_phyDat)
+parsimony(treeNJ, sign_seqs_phyDat)
+
+treePars  <- optim.parsimony(treeUPGMA, sign_seqs_phyDat)
+
+#parsimony ratchet (Nixon 1999)
+treeRatchet  <- pratchet(sign_seqs_phyDat, trace = 0)
+parsimony(c(treePars, treeRatchet), sign_seqs_phyDat)
+
+treeRatchet  <- acctran(treeRatchet, sign_seqs_phyDat)
+
+plotBS(midpoint(treeRatchet), type="phylogram")
+```
+
+### Maximum likelihood
+```{r}
+fit = pml(treeNJ, data=sign_seqs_phyDat)
+fit
+fitJC  <- optim.pml(fit, TRUE)
+logLik(fitJC)
+
+fitWAG <- update(fit, k=4, inv=0.2)
+
+fitWAG <- optim.pml(fitWAG, model="Dayhoff_DCMut", optInv=TRUE, optGamma=TRUE,
+    rearrangement = "stochastic", control = pml.control(trace = 0))
+fitGTR
+```
+
+# HMMER
+## hmmsearch
+```{bash}
+docker run --rm -ti -v $(pwd):/home/my_data  staphb/hmmer
+cd ..
+
+mkdir my_data/hmm_search
+
+hmmsearch --cut_ga --domtblout my_data/hmm_search/PAE_domtbl.out my_data/PAE.hmm my_data/oma_db > /dev/null
+```
+
+## Import hmmsearch results into R
+```{r}
+hmmsearch_result <- "hmm_search/PAE_domtbl.out"
+second_line_fields <- c("target_name", "accession_1", "tlen", "query_name",
+                        "accession_2", "qlen",   "E-value_full_seq", "score_full_seq",
+                        "bias_full_seq",
+                        "this_domain_#",  "of_this_domain",  "c-Evalue_this_domain",
+                        "i-Evalue_this_domain",  "score_this_domain", "bias_this_domain", 
+                        "from_hmm_coord", "to_hmm_coord", "from_ali_coord", "to_ali_coord", 
+                        "from_env_coord", "to_env_coord", "acc", "description_of_target")
+
+notum_hmmsearch <- data.table::fread(cmd = "grep -v '^#' hmm_search/PAE_domtbl.out", 
+                  header = FALSE, sep = " ",  fill=TRUE) %>% 
+  unite("V23",c(str_c("V",23:33)))
+
+names(notum_hmmsearch) <- second_line_fields
+```
+
+## Multiple Sequence Alignment
+```{r}
+# filter for the hmmsearch complete sequences
+fasta_db_fil <- fasta_db[names_fst_db %in% notum_hmmsearch$target_name]
+
+# filter for the hmmsearch env_coord sequences
+fasta_db_fil_with_len <- fasta_db[names_fst_db %in% notum_hmmsearch$target_name]
+
+fasta_db_fil_with_len <- fasta_db_fil_with_len[sort(names(fasta_db_fil_with_len))]
+
+notum_hmmsearch_clm <- notum_hmmsearch %>% 
+  filter(!duplicated(target_name)) %>% 
+  select(target_name, from_env_coord, to_env_coord) %>% 
+  arrange(target_name)
+
+#fasta_db_fil_with_len %>% head %>% Biostrings::as.list() %>% Biostrings::AAStringSet()
+fasta_db_fil_with_len <- pmap(list(fasta_db_fil_with_len %>% as.list, 
+          notum_hmmsearch_clm %>% select(target_name, from_env_coord) %>% deframe %>% as.list(),
+          notum_hmmsearch_clm %>% select(target_name, to_env_coord) %>% deframe %>% as.list()),
+     subseq) %>% Biostrings::AAStringSet()
+```
+
+## perform MSA with MUSCLE hmmsearch
+```{r}
+hmmsearch_muscle <- msaMuscle(fasta_db_fil)
+hmmsearch_bio2mds <- msa::msaConvert(hmmsearch_muscle, type = "bios2mds::align")
+export.fasta(hmmsearch_bio2mds, outfile = "hmmsearch_msa_muscle.fa", ncol = 60, open = "w")
+
+## env_coord
+hmmsearch_env_coord_muscle <- msaMuscle(fasta_db_fil_with_len)
+hmmsearch_env_coord_bio2mds <- msa::msaConvert(hmmsearch_env_coord_muscle, type = "bios2mds::align")
+export.fasta(hmmsearch_env_coord_bio2mds, outfile = "hmmsearch_env_coord_msa_muscle.fa", ncol = 60, open = "w")
+```
+check the sign_seqs_msa_muscle.fa file for the alignments
+
+## IQTREE hmmsearch
+```{bash}
+docker run --rm -ti -v $(pwd):/home/my_data staphb/iqtree
+
+cd home
+mkdir my_data/my_hmmsearch_tree
+
+iqtree -s my_data/hmmsearch_msa_muscle.fa -nt 8 -mset LG -pre my_data/my_hmmsearch_tree/my_hmmsearch_tree
+
+iqtree -s my_data/hmmsearch_env_coord_msa_muscle.fa -nt 8 -mset LG -pre my_data/my_hmmsearch_tree/my_hmmsearch_env_coord_tree
+
+```
+
 
