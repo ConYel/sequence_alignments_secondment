@@ -1,0 +1,979 @@
+IQ-TREE multicore version 1.6.7 for Linux 64-bit built Aug 23 2018
+Developed by Bui Quang Minh, Nguyen Lam Tung, Olga Chernomor,
+Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
+
+Host:    d5d028e80f9d (AVX, 251 GB RAM)
+Command: iqtree -s my_data/wnt_hmmsearch_env_coord_msa_muscle.fa -nt 8 -mset LG -pre my_data/my_hmmsearch_tree/wnt_hmmsearch_env_coord_tree
+Seed:    748799 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Fri Jul 30 08:02:40 2021
+Kernel:  AVX - 8 threads (32 CPU cores detected)
+
+Reading alignment file my_data/wnt_hmmsearch_env_coord_msa_muscle.fa ... Fasta format detected
+Alignment most likely contains protein sequences
+Alignment has 378 sequences with 853 columns, 747 distinct patterns
+454 parsimony-informative, 214 singleton sites, 185 constant sites
+WARNING: Some sequence names are changed as follows:
+a_aur|scaffold7.g138.t1 -> a_aur_scaffold7.g138.t1
+a_aur|scaffold27.g39.t1 -> a_aur_scaffold27.g39.t1
+m_vir|scaffold547.g7.t1 -> m_vir_scaffold547.g7.t1
+d_gig|g5240.t1 -> d_gig_g5240.t1
+Bf|XP_002601759.1 -> Bf_XP_002601759.1
+Hs|WNT2 -> Hs_WNT2
+Hs|WNT2B -> Hs_WNT2B
+Ct|ELU12345.1 -> Ct_ELU12345.1
+Xb|g10593.t1 -> Xb_g10593.t1
+Pc|957856952 -> Pc_957856952
+Ac|325297128 -> Ac_325297128
+Sk|259013323 -> Sk_259013323
+Cg|762122869 -> Cg_762122869
+La|919094544 -> La_919094544
+Pa|g5116.t1 -> Pa_g5116.t1
+Ad|XP_015766010.1 -> Ad_XP_015766010.1
+Ep|XP_020895878.1 -> Ep_XP_020895878.1
+Nv|NVE21992 -> Nv_NVE21992
+d_gig|g11206.t1 -> d_gig_g11206.t1
+d_gig|g22643.t1 -> d_gig_g22643.t1
+Pd|XP_027050502.1 -> Pd_XP_027050502.1
+Pd|XP_027050539.1 -> Pd_XP_027050539.1
+Of|1176070452 -> Of_1176070452
+Of|1176070418 -> Of_1176070418
+Of|1176070424 -> Of_1176070424
+Of|1176070450 -> Of_1176070450
+Pd|XP_027050567.1 -> Pd_XP_027050567.1
+Nv|NVE24194 -> Nv_NVE24194
+Ad|XP_015765977.1 -> Ad_XP_015765977.1
+m_lei|ML07528a -> m_lei_ML07528a
+sb|3478750| -> sb_3478750_
+p_nak|g4617.t1 -> p_nak_g4617.t1
+p_nak|g28289.t1 -> p_nak_g28289.t1
+m_vir|scaffold173.g13.t1 -> m_vir_scaffold173.g13.t1
+Hv|221123502 -> Hv_221123502
+c_hem|XLOC_000650 -> c_hem_XLOC_000650
+c_hem|XLOC_030003 -> c_hem_XLOC_030003
+c_hem|XLOC_000592 -> c_hem_XLOC_000592
+Ta|XP_002116107.1 -> Ta_XP_002116107.1
+a_aur|scaffold194.g16.t1 -> a_aur_scaffold194.g16.t1
+m_vir|scaffold18.g51.t1 -> m_vir_scaffold18.g51.t1
+d_gig|g22657.t1 -> d_gig_g22657.t1
+Ci|699242931 -> Ci_699242931
+d_gig|g12656.t1 -> d_gig_g12656.t1
+Ad|XP_015753662.1 -> Ad_XP_015753662.1
+Pd|XP_027043371.1 -> Pd_XP_027043371.1
+Of|1176121526 -> Of_1176121526
+Nv|NVE17595 -> Nv_NVE17595
+Ep|XP_020893235.1 -> Ep_XP_020893235.1
+c_hem|XLOC_001931 -> c_hem_XLOC_001931
+Hv|565324131 -> Hv_565324131
+a_aur|scaffold283.g27.t1 -> a_aur_scaffold283.g27.t1
+m_vir|scaffold3.g1.t1 -> m_vir_scaffold3.g1.t1
+m_lei|ML101013a -> m_lei_ML101013a
+sb|3469705| -> sb_3469705_
+Ct|ELT92315.1 -> Ct_ELT92315.1
+Ac|871218711 -> Ac_871218711
+Cg|762162830 -> Cg_762162830
+Pa|g10667.t1 -> Pa_g10667.t1
+La|919047853 -> La_919047853
+La|919073302 -> La_919073302
+Dm|wntD -> Dm_wntD
+Ce|lin-44 -> Ce_lin-44
+Nv|NVE3111 -> Nv_NVE3111
+Ep|XP_020902344.1 -> Ep_XP_020902344.1
+Ep|XP_020904759.1 -> Ep_XP_020904759.1
+Ad|XP_015759687.1 -> Ad_XP_015759687.1
+Of|1176083309 -> Of_1176083309
+Pd|XP_027054997.1 -> Pd_XP_027054997.1
+Ci|198430045 -> Ci_198430045
+d_gig|g12409.t1 -> d_gig_g12409.t1
+Of|1176121828 -> Of_1176121828
+Ad|XP_015753685.1 -> Ad_XP_015753685.1
+Pd|XP_027043510.1 -> Pd_XP_027043510.1
+Ep|XP_020893167.1 -> Ep_XP_020893167.1
+Nv|NVE12960 -> Nv_NVE12960
+Xb|g10295.t1 -> Xb_g10295.t1
+Dm|Wnt4 -> Dm_Wnt4
+Ct|ELT95358.1 -> Ct_ELT95358.1
+Cg|762145213 -> Cg_762145213
+Pa|g11990.t1 -> Pa_g11990.t1
+Bf|XP_002598626.1 -> Bf_XP_002598626.1
+Hs|WNT1 -> Hs_WNT1
+Sp|184186101 -> Sp_184186101
+Dm|wg -> Dm_wg
+Sk|259013321 -> Sk_259013321
+Pc|957821455 -> Pc_957821455
+m_vir|scaffold86.g22.t1 -> m_vir_scaffold86.g22.t1
+d_gig|g12410.t1 -> d_gig_g12410.t1
+a_aur|scaffold131.g5.t1 -> a_aur_scaffold131.g5.t1
+Xb|g12692.t1 -> Xb_g12692.t1
+Sk|269785075 -> Sk_269785075
+Hs|WNT11 -> Hs_WNT11
+Sp|390359651 -> Sp_390359651
+Sk|259013327 -> Sk_259013327
+Bf|XP_002598513.1 -> Bf_XP_002598513.1
+Hs|WNT3 -> Hs_WNT3
+Hs|WNT3A -> Hs_WNT3A
+Ce|mom-2 -> Ce_mom-2
+Bf|XP_002593786.1 -> Bf_XP_002593786.1
+Bf|XP_002593787.1 -> Bf_XP_002593787.1
+Ci|118343944 -> Ci_118343944
+Ci|699246177 -> Ci_699246177
+m_vir|scaffold426.g7.t1 -> m_vir_scaffold426.g7.t1
+d_gig|g21105.t1 -> d_gig_g21105.t1
+Xb|g3564.t1 -> Xb_g3564.t1
+a_aur|scaffold122.g31.t1 -> a_aur_scaffold122.g31.t1
+Xb|g3640.t1 -> Xb_g3640.t1
+Ac|871277480 -> Ac_871277480
+Pc|957816287 -> Pc_957816287
+Pc|957863109 -> Pc_957863109
+Hs|WNT4 -> Hs_WNT4
+Sp|780127302 -> Sp_780127302
+Bf|XP_002613927.1 -> Bf_XP_002613927.1
+Ct|ELU08380.1 -> Ct_ELU08380.1
+Cg|762130971 -> Cg_762130971
+Sk|291234645 -> Sk_291234645
+Pa|g8454.t1 -> Pa_g8454.t1
+La|919093778 -> La_919093778
+La|919095381 -> La_919095381
+Ep|XP_020898389.1 -> Ep_XP_020898389.1
+Ep|XP_020898418.1 -> Ep_XP_020898418.1
+Ep|XP_020898388.1 -> Ep_XP_020898388.1
+Ep|XP_020898417.1 -> Ep_XP_020898417.1
+Ep|XP_020898386.1 -> Ep_XP_020898386.1
+Nv|NVE12095 -> Nv_NVE12095
+a_aur|scaffold25.g67.t1 -> a_aur_scaffold25.g67.t1
+m_vir|scaffold120.g22.t1 -> m_vir_scaffold120.g22.t1
+Hv|449682050 -> Hv_449682050
+Hv|449664985 -> Hv_449664985
+Hv|449664987 -> Hv_449664987
+c_hem|XLOC_035748 -> c_hem_XLOC_035748
+Ep|XP_020913045.1 -> Ep_XP_020913045.1
+Nv|NVE4014 -> Nv_NVE4014
+Ad|XP_015753683.1 -> Ad_XP_015753683.1
+Of|1176121721 -> Of_1176121721
+Pd|XP_027043509.1 -> Pd_XP_027043509.1
+Ct|ELT92804.1 -> Ct_ELT92804.1
+Dm|Wnt6 -> Dm_Wnt6
+Xb|g3362.t1 -> Xb_g3362.t1
+Hs|WNT6 -> Hs_WNT6
+Sp|72019591 -> Sp_72019591
+Sk|269785049 -> Sk_269785049
+Bf|XP_002598625.1 -> Bf_XP_002598625.1
+Pa|g11991.t1 -> Pa_g11991.t1
+La|919077760 -> La_919077760
+Pc|957821462 -> Pc_957821462
+Cg|762145207 -> Cg_762145207
+Ac|871223576 -> Ac_871223576
+Ac|871278161 -> Ac_871278161
+p_nak|g5177.t1 -> p_nak_g5177.t1
+c_hem|XLOC_041826 -> c_hem_XLOC_041826
+m_lei|ML06021a -> m_lei_ML06021a
+sb|3467531| -> sb_3467531_
+Hv|828219244 -> Hv_828219244
+d_gig|g13987.t1 -> d_gig_g13987.t1
+m_vir|scaffold5.g35.t1 -> m_vir_scaffold5.g35.t1
+Cg|762148731 -> Cg_762148731
+Sp|47551299 -> Sp_47551299
+Ct|ELT96282.1 -> Ct_ELT96282.1
+Xb|g10773.t1 -> Xb_g10773.t1
+Hs|WNT8A -> Hs_WNT8A
+Hs|WNT8B -> Hs_WNT8B
+Bf|XP_002610991.1 -> Bf_XP_002610991.1
+Pa|g14762.t1 -> Pa_g14762.t1
+La|919000079 -> La_919000079
+Pc|957858747 -> Pc_957858747
+Xb|g12093.t1 -> Xb_g12093.t1
+Sk|269785053 -> Sk_269785053
+c_hem|XLOC_002938 -> c_hem_XLOC_002938
+Ad|XP_015752567.1 -> Ad_XP_015752567.1
+Of|1176116488 -> Of_1176116488
+Pd|XP_027047106.1 -> Pd_XP_027047106.1
+Pd|XP_027036366.1 -> Pd_XP_027036366.1
+Pd|XP_027036395.1 -> Pd_XP_027036395.1
+Pd|XP_027036360.1 -> Pd_XP_027036360.1
+Pd|XP_027036377.1 -> Pd_XP_027036377.1
+Hv|449678238 -> Hv_449678238
+a_aur|scaffold298.g9.t2 -> a_aur_scaffold298.g9.t2
+m_vir|scaffold536.g7.t1 -> m_vir_scaffold536.g7.t1
+Pd|XP_027036394.1 -> Pd_XP_027036394.1
+d_gig|g8669.t1 -> d_gig_g8669.t1
+Of|1176066669 -> Of_1176066669
+Of|1176066687 -> Of_1176066687
+Ad|XP_015763191.1 -> Ad_XP_015763191.1
+Of|1176116637 -> Of_1176116637
+Of|1176116698 -> Of_1176116698
+Pd|XP_027053042.1 -> Pd_XP_027053042.1
+Pd|XP_027053295.1 -> Pd_XP_027053295.1
+Of|1176080939 -> Of_1176080939
+Pd|XP_027036390.1 -> Pd_XP_027036390.1
+Ad|XP_015762746.1 -> Ad_XP_015762746.1
+Ad|XP_015762754.1 -> Ad_XP_015762754.1
+Of|1176080931 -> Of_1176080931
+Of|1176080836 -> Of_1176080836
+Pd|XP_027036368.1 -> Pd_XP_027036368.1
+Sp|115901760 -> Sp_115901760
+Hs|LOC102724183 -> Hs_LOC102724183
+Sk|269785055 -> Sk_269785055
+Bf|XP_002598627.1 -> Bf_XP_002598627.1
+Hs|WNT9A -> Hs_WNT9A
+Hs|WNT9B -> Hs_WNT9B
+c_hem|XLOC_015404 -> c_hem_XLOC_015404
+Hv|221122965 -> Hv_221122965
+a_aur|scaffold25.g69.t1 -> a_aur_scaffold25.g69.t1
+a_aur|scaffold25.g68.t1 -> a_aur_scaffold25.g68.t1
+m_vir|scaffold1708.g1.t1 -> m_vir_scaffold1708.g1.t1
+m_vir|scaffold120.g27.t1 -> m_vir_scaffold120.g27.t1
+m_vir|scaffold120.g23.t1 -> m_vir_scaffold120.g23.t1
+d_gig|g12411.t1 -> d_gig_g12411.t1
+Ci|198422608 -> Ci_198422608
+Pc|957821472 -> Pc_957821472
+Dm|Wnt10 -> Dm_Wnt10
+Ct|ELT95359.1 -> Ct_ELT95359.1
+Hs|WNT10B -> Hs_WNT10B
+Bf|XP_002598506.1 -> Bf_XP_002598506.1
+Pa|g13362.t1 -> Pa_g13362.t1
+La|919077758 -> La_919077758
+La|919077778 -> La_919077778
+Cg|762145195 -> Cg_762145195
+Ac|524909465 -> Ac_524909465
+m_lei|ML01051a -> m_lei_ML01051a
+sb|3462483| -> sb_3462483_
+c_hem|XLOC_006909 -> c_hem_XLOC_006909
+Ep|XP_020898370.1 -> Ep_XP_020898370.1
+Nv|NVE12517 -> Nv_NVE12517
+Nv|NVE23768 -> Nv_NVE23768
+Nv|NVE4456 -> Nv_NVE4456
+Ep|XP_020898335.1 -> Ep_XP_020898335.1
+Ep|XP_020898355.1 -> Ep_XP_020898355.1
+Nv|NVE2845 -> Nv_NVE2845
+Nv|NVE2850 -> Nv_NVE2850
+Nv|NVE2846 -> Nv_NVE2846
+Nv|NVE2847 -> Nv_NVE2847
+Nv|NVE2851 -> Nv_NVE2851
+Nv|NVE2843 -> Nv_NVE2843
+Nv|NVE912 -> Nv_NVE912
+Nv|NVE2848 -> Nv_NVE2848
+Nv|NVE2849 -> Nv_NVE2849
+Nv|NVE2842 -> Nv_NVE2842
+Nv|NVE2844 -> Nv_NVE2844
+Nv|NVE1783 -> Nv_NVE1783
+Of|1176096399 -> Of_1176096399
+Ad|XP_015751349.1 -> Ad_XP_015751349.1
+Pd|XP_027056914.1 -> Pd_XP_027056914.1
+Ta|XP_002108223.1 -> Ta_XP_002108223.1
+c_hem|XLOC_015382 -> c_hem_XLOC_015382
+Aq|NP_001292181.1 -> Aq_NP_001292181.1
+c_hem|XLOC_045775 -> c_hem_XLOC_045775
+Ad|XP_015760765.1 -> Ad_XP_015760765.1
+Of|1176096607 -> Of_1176096607
+Pd|XP_027056895.1 -> Pd_XP_027056895.1
+Ep|XP_020904200.1 -> Ep_XP_020904200.1
+Nv|NVE1780 -> Nv_NVE1780
+Nv|NVE20298 -> Nv_NVE20298
+c_hem|XLOC_041060 -> c_hem_XLOC_041060
+Hv|221101247 -> Hv_221101247
+a_aur|scaffold12.g80.t1 -> a_aur_scaffold12.g80.t1
+Hv|221117263 -> Hv_221117263
+Ci|74136741 -> Ci_74136741
+Aq|XP_003384323.1 -> Aq_XP_003384323.1
+a_aur|scaffold122.g30.t1 -> a_aur_scaffold122.g30.t1
+Aq|NP_001266204.1 -> Aq_NP_001266204.1
+c_hem|XLOC_031686 -> c_hem_XLOC_031686
+a_aur|scaffold33.g64.t1 -> a_aur_scaffold33.g64.t1
+m_vir|scaffold12.g86.t1 -> m_vir_scaffold12.g86.t1
+Ta|XP_002116099.1 -> Ta_XP_002116099.1
+p_nak|g5173.t1 -> p_nak_g5173.t1
+Bf|XP_002609873.1 -> Bf_XP_002609873.1
+Pa|g4991.t1 -> Pa_g4991.t1
+m_vir|scaffold383.g9.t1 -> m_vir_scaffold383.g9.t1
+Pc|957829593 -> Pc_957829593
+La|919045136 -> La_919045136
+La|919096882 -> La_919096882
+Pc|957860499 -> Pc_957860499
+Ct|ELU04026.1 -> Ct_ELU04026.1
+Pa|g18101.t1 -> Pa_g18101.t1
+La|919022621 -> La_919022621
+Ac|871236807 -> Ac_871236807
+Cg|762164767 -> Cg_762164767
+Ac|524870527 -> Ac_524870527
+Cg|762141774 -> Cg_762141774
+Ct|ELU01968.1 -> Ct_ELU01968.1
+Sk|269785077 -> Sk_269785077
+Hs|WNT5A -> Hs_WNT5A
+Hs|WNT5B -> Hs_WNT5B
+Bf|XP_002597279.1 -> Bf_XP_002597279.1
+Pc|957847274 -> Pc_957847274
+Ep|XP_020904179.1 -> Ep_XP_020904179.1
+d_gig|g8670.t1 -> d_gig_g8670.t1
+Ci|118343946 -> Ci_118343946
+m_vir|scaffold18.g46.t1 -> m_vir_scaffold18.g46.t1
+Ad|XP_015753686.1 -> Ad_XP_015753686.1
+Of|1176121725 -> Of_1176121725
+Pd|XP_027043512.1 -> Pd_XP_027043512.1
+Ep|XP_020913046.1 -> Ep_XP_020913046.1
+Nv|NVE4013 -> Nv_NVE4013
+Pc|957821392 -> Pc_957821392
+d_gig|g20156.t1 -> d_gig_g20156.t1
+d_gig|g28184.t1 -> d_gig_g28184.t1
+d_gig|g30725.t1 -> d_gig_g30725.t1
+Ce|egl-20 -> Ce_egl-20
+Sp|72136290 -> Sp_72136290
+m_vir|scaffold327.g6.t2 -> m_vir_scaffold327.g6.t2
+a_aur|scaffold119.g40.t1 -> a_aur_scaffold119.g40.t1
+d_gig|g27482.t1 -> d_gig_g27482.t1
+Ci|198429421 -> Ci_198429421
+Sk|284005183 -> Sk_284005183
+Ct|ELT87681.1 -> Ct_ELT87681.1
+Ta|XP_002116098.1 -> Ta_XP_002116098.1
+Pa|g12416.t1 -> Pa_g12416.t1
+Hs|WNT7A -> Hs_WNT7A
+Hs|WNT7B -> Hs_WNT7B
+Sp|390346016 -> Sp_390346016
+Sk|269785051 -> Sk_269785051
+Bf|XP_002597288.1 -> Bf_XP_002597288.1
+Xb|g10601.t1 -> Xb_g10601.t1
+Ct|ELU03126.1 -> Ct_ELU03126.1
+Cg|762116145 -> Cg_762116145
+Ac|871259004 -> Ac_871259004
+Ac|524895487 -> Ac_524895487
+Hv|828195360 -> Hv_828195360
+Sp|390355306 -> Sp_390355306
+Hs|WNT16 -> Hs_WNT16
+Bf|XP_002599799.1 -> Bf_XP_002599799.1
+Sk|585693557 -> Sk_585693557
+Pc|957856751 -> Pc_957856751
+Cg|762170497 -> Cg_762170497
+La|919022635 -> La_919022635
+Ac|871214129 -> Ac_871214129
+Ce|cwn-2 -> Ce_cwn-2
+Xb|g3360.t1 -> Xb_g3360.t1
+Ce|cwn-1 -> Ce_cwn-1
+m_vir|scaffold383.g6.t1 -> m_vir_scaffold383.g6.t1
+Ci|699246636 -> Ci_699246636
+Of|1176078059 -> Of_1176078059
+Pd|XP_027040481.1 -> Pd_XP_027040481.1
+Dm|Wnt2 -> Dm_Wnt2
+Ct|ELT95360.1 -> Ct_ELT95360.1
+Sp|390337139 -> Sp_390337139
+Sk|291244845 -> Sk_291244845
+Xb|g10402.t1 -> Xb_g10402.t1
+Ci|74136035 -> Ci_74136035
+Pa|g12298.t1 -> Pa_g12298.t1
+Xb|g3363.t1 -> Xb_g3363.t1
+Cg|762144077 -> Cg_762144077
+Nv|NVE24195 -> Nv_NVE24195
+Ac|871217779 -> Ac_871217779
+Hs|WNT10A -> Hs_WNT10A
+Dm|Wnt5 -> Dm_Wnt5
+Ep|XP_020916616.1 -> Ep_XP_020916616.1
+Nv|NVE17746 -> Nv_NVE17746
+Ad|XP_015754603.1 -> Ad_XP_015754603.1
+Pa|g17239.t1 -> Pa_g17239.t1
+La|919022641 -> La_919022641
+Ad|XP_015754600.1 -> Ad_XP_015754600.1
+Ad|XP_015759292.1 -> Ad_XP_015759292.1
+Pd|XP_027053052.1 -> Pd_XP_027053052.1
+Ad|XP_015754594.1 -> Ad_XP_015754594.1
+Pd|XP_027057346.1 -> Pd_XP_027057346.1
+La|919077788 -> La_919077788
+Ep|XP_020904195.1 -> Ep_XP_020904195.1
+Of|1176060953 -> Of_1176060953
+Of|1176115542 -> Of_1176115542
+Bf|XP_002598508.1 -> Bf_XP_002598508.1
+Of|1176115415 -> Of_1176115415
+a_aur|scaffold86.g32.t1 -> a_aur_scaffold86.g32.t1
+Ep|XP_020904196.1 -> Ep_XP_020904196.1
+Ad|XP_015764912.1 -> Ad_XP_015764912.1
+Ad|XP_015750729.1 -> Ad_XP_015750729.1
+Of|1176060957 -> Of_1176060957
+La|919077790 -> La_919077790
+La|919077756 -> La_919077756
+La|919075297 -> La_919075297
+Cg|762145225 -> Cg_762145225
+Pc|957861843 -> Pc_957861843
+Sp|72153594 -> Sp_72153594
+Sp|780024491 -> Sp_780024491
+
+                          Gap/Ambiguity  Composition  p-value
+   1  a_aur_scaffold7.g138.t1    59.20%    passed     50.52%
+   2  a_aur_scaffold27.g39.t1    58.26%    failed      2.11%
+   3  m_vir_scaffold547.g7.t1    79.95%    passed     96.41%
+   4  d_gig_g5240.t1             63.66%    passed     21.65%
+   5  Bf_XP_002601759.1          62.72%    passed     15.74%
+   6  Hs_WNT2                    60.96%    passed     85.22%
+   7  Hs_WNT2B                   60.96%    failed      1.07%
+   8  Ct_ELU12345.1              60.84%    passed     41.25%
+   9  Xb_g10593.t1               60.96%    passed     68.61%
+  10  Pc_957856952               84.41%    passed     27.80%
+  11  Ac_325297128               60.96%    passed     45.76%
+  12  Sk_259013323               60.84%    passed     75.86%
+  13  Cg_762122869               60.84%    passed     29.69%
+  14  La_919094544               60.84%    passed     77.54%
+  15  Pa_g5116.t1                61.20%    passed     56.53%
+  16  Ad_XP_015766010.1          61.08%    passed     96.20%
+  17  Ep_XP_020895878.1          61.43%    passed     95.34%
+  18  Nv_NVE21992                61.43%    passed     77.04%
+  19  d_gig_g11206.t1            61.43%    passed     89.04%
+  20  d_gig_g22643.t1            61.43%    passed     89.04%
+  21  Pd_XP_027050502.1          61.31%    passed     99.29%
+  22  Pd_XP_027050539.1          73.51%    passed     56.91%
+  23  Of_1176070452              60.96%    passed     96.49%
+  24  Of_1176070418              70.81%    passed     64.77%
+  25  Of_1176070424              60.73%    passed     79.73%
+  26  Of_1176070450              61.43%    passed     85.72%
+  27  Pd_XP_027050567.1          61.31%    passed     35.48%
+  28  Nv_NVE24194                85.70%    passed      5.66%
+  29  Ad_XP_015765977.1          87.92%    passed     35.02%
+  30  m_lei_ML07528a             62.02%    passed      5.93%
+  31  sb_3478750_                86.75%    failed      0.94%
+  32  p_nak_g4617.t1             59.09%    passed      6.57%
+  33  p_nak_g28289.t1            67.76%    passed     23.76%
+  34  m_vir_scaffold173.g13.t1   59.32%    passed     77.57%
+  35  Hv_221123502               59.55%    passed      9.85%
+  36  c_hem_XLOC_000650          59.44%    passed     84.27%
+  37  c_hem_XLOC_030003          59.09%    passed     36.51%
+  38  c_hem_XLOC_000592          89.92%    failed      0.83%
+  39  Ta_XP_002116107.1          61.90%    failed      2.85%
+  40  a_aur_scaffold194.g16.t1   60.61%    passed     54.68%
+  41  m_vir_scaffold18.g51.t1    60.61%    passed     73.94%
+  42  d_gig_g22657.t1            59.79%    failed      1.72%
+  43  Ci_699242931               53.93%    passed     40.29%
+  44  d_gig_g12656.t1            67.29%    passed     87.85%
+  45  Ad_XP_015753662.1          60.96%    passed     93.06%
+  46  Pd_XP_027043371.1          61.08%    passed     88.01%
+  47  Of_1176121526              61.08%    passed     86.05%
+  48  Nv_NVE17595                61.08%    passed     95.71%
+  49  Ep_XP_020893235.1          61.08%    passed     84.98%
+  50  c_hem_XLOC_001931          60.02%    passed     62.93%
+  51  Hv_565324131               60.02%    passed     30.41%
+  52  a_aur_scaffold283.g27.t1   60.38%    passed     85.12%
+  53  m_vir_scaffold3.g1.t1      60.38%    passed     84.94%
+  54  m_lei_ML101013a            59.09%    passed     62.34%
+  55  sb_3469705_                70.81%    passed     17.09%
+  56  Ct_ELT92315.1              60.73%    passed     99.26%
+  57  Ac_871218711               60.61%    passed     69.01%
+  58  Cg_762162830               60.73%    passed     61.31%
+  59  Pa_g10667.t1               60.96%    passed     60.58%
+  60  La_919047853               84.06%    failed      0.41%
+  61  La_919073302               60.61%    passed     45.80%
+  62  Dm_wntD                    83.12%    failed      1.28%
+  63  Ce_lin-44                  64.01%    passed     37.53%
+  64  Nv_NVE3111                 60.49%    passed     50.84%
+  65  Ep_XP_020902344.1          56.86%    failed      0.00%
+  66  Ep_XP_020904759.1          56.86%    failed      0.00%
+  67  Ad_XP_015759687.1          60.38%    passed     24.60%
+  68  Of_1176083309              60.38%    passed     32.12%
+  69  Pd_XP_027054997.1          60.26%    passed     84.08%
+  70  Ci_198430045               60.84%    passed     87.58%
+  71  d_gig_g12409.t1            60.73%    passed     94.79%
+  72  Of_1176121828              80.77%    passed     48.23%
+  73  Ad_XP_015753685.1          60.26%    passed     99.70%
+  74  Pd_XP_027043510.1          60.38%    passed     99.24%
+  75  Ep_XP_020893167.1          60.49%    passed     98.93%
+  76  Nv_NVE12960                60.02%    passed     70.97%
+  77  Xb_g10295.t1               61.43%    passed     23.75%
+  78  Dm_Wnt4                    61.90%    passed     62.97%
+  79  Ct_ELT95358.1              59.91%    passed     94.83%
+  80  Cg_762145213               58.97%    passed     81.95%
+  81  Pa_g11990.t1               59.67%    passed     91.57%
+  82  Bf_XP_002598626.1          60.02%    passed     80.13%
+  83  Hs_WNT1                    60.49%    failed      0.17%
+  84  Sp_184186101               60.14%    passed     18.12%
+  85  Dm_wg                      49.00%    passed     12.62%
+  86  Sk_259013321               59.79%    passed     94.09%
+  87  Pc_957821455               59.91%    passed     95.32%
+  88  m_vir_scaffold86.g22.t1    75.50%    passed     13.62%
+  89  d_gig_g12410.t1            61.08%    passed     80.88%
+  90  a_aur_scaffold131.g5.t1    60.02%    passed     23.13%
+  91  Xb_g12692.t1               60.96%    passed     58.00%
+  92  Sk_269785075               60.84%    passed     95.88%
+  93  Hs_WNT11                   59.67%    passed      7.40%
+  94  Sp_390359651               59.91%    passed     36.04%
+  95  Sk_259013327               60.73%    passed     91.81%
+  96  Bf_XP_002598513.1          57.56%    passed     53.86%
+  97  Hs_WNT3                    60.73%    passed     43.97%
+  98  Hs_WNT3A                   60.73%    passed     33.75%
+  99  Ce_mom-2                   59.91%    passed     98.77%
+ 100  Bf_XP_002593786.1          60.96%    passed     82.04%
+ 101  Bf_XP_002593787.1          80.30%    passed      7.43%
+ 102  Ci_118343944               60.73%    passed     91.69%
+ 103  Ci_699246177               59.09%    passed     86.63%
+ 104  m_vir_scaffold426.g7.t1    60.14%    passed     94.51%
+ 105  d_gig_g21105.t1            66.82%    passed     73.72%
+ 106  Xb_g3564.t1                60.02%    passed     52.89%
+ 107  a_aur_scaffold122.g31.t1   72.10%    passed     99.33%
+ 108  Xb_g3640.t1                60.61%    passed     59.71%
+ 109  Ac_871277480               60.96%    passed     81.37%
+ 110  Pc_957816287               61.20%    passed     81.58%
+ 111  Pc_957863109               85.70%    failed      0.03%
+ 112  Hs_WNT4                    60.96%    passed     30.12%
+ 113  Sp_780127302               66.71%    passed     81.40%
+ 114  Bf_XP_002613927.1          60.61%    passed     33.61%
+ 115  Ct_ELU08380.1              60.84%    passed     65.73%
+ 116  Cg_762130971               60.61%    passed     87.24%
+ 117  Sk_291234645               60.02%    passed     99.57%
+ 118  Pa_g8454.t1                61.20%    passed     92.24%
+ 119  La_919093778               60.96%    passed     92.59%
+ 120  La_919095381               78.19%    passed     88.18%
+ 121  Ep_XP_020898389.1          62.02%    passed     46.76%
+ 122  Ep_XP_020898418.1          73.74%    passed     70.68%
+ 123  Ep_XP_020898388.1          61.90%    passed     52.59%
+ 124  Ep_XP_020898417.1          63.07%    passed     85.47%
+ 125  Ep_XP_020898386.1          58.97%    passed     92.72%
+ 126  Nv_NVE12095                59.79%    passed     22.92%
+ 127  a_aur_scaffold25.g67.t1    59.44%    passed     77.53%
+ 128  m_vir_scaffold120.g22.t1   75.97%    passed     78.36%
+ 129  Hv_449682050               61.78%    failed      2.66%
+ 130  Hv_449664985               61.31%    passed     18.30%
+ 131  Hv_449664987               61.08%    failed      2.97%
+ 132  c_hem_XLOC_035748          59.55%    passed     10.38%
+ 133  Ep_XP_020913045.1          58.73%    passed     11.37%
+ 134  Nv_NVE4014                 58.85%    passed     93.50%
+ 135  Ad_XP_015753683.1          58.15%    passed     97.65%
+ 136  Of_1176121721              58.15%    passed     48.68%
+ 137  Pd_XP_027043509.1          58.03%    passed     89.34%
+ 138  Ct_ELT92804.1              61.31%    passed     99.51%
+ 139  Dm_Wnt6                    51.93%    passed      8.50%
+ 140  Xb_g3362.t1                61.43%    passed     18.23%
+ 141  Hs_WNT6                    59.09%    failed      0.00%
+ 142  Sp_72019591                61.20%    passed     84.56%
+ 143  Sk_269785049               68.82%    passed     68.31%
+ 144  Bf_XP_002598625.1          61.55%    passed     87.20%
+ 145  Pa_g11991.t1               61.31%    passed     98.83%
+ 146  La_919077760               61.31%    passed     90.44%
+ 147  Pc_957821462               69.05%    passed     96.62%
+ 148  Cg_762145207               61.20%    passed     93.98%
+ 149  Ac_871223576               78.78%    passed     59.36%
+ 150  Ac_871278161               61.43%    passed     74.76%
+ 151  p_nak_g5177.t1             66.71%    failed      0.68%
+ 152  c_hem_XLOC_041826          61.66%    failed      0.58%
+ 153  m_lei_ML06021a             60.96%    passed     61.85%
+ 154  sb_3467531_                83.00%    passed     39.16%
+ 155  Hv_828219244               59.44%    failed      0.22%
+ 156  d_gig_g13987.t1            66.24%    passed     21.73%
+ 157  m_vir_scaffold5.g35.t1     67.88%    passed     22.62%
+ 158  Cg_762148731               60.96%    passed     94.98%
+ 159  Sp_47551299                59.32%    failed      2.54%
+ 160  Ct_ELT96282.1              59.91%    passed     65.50%
+ 161  Xb_g10773.t1               85.11%    passed     41.71%
+ 162  Hs_WNT8A                   61.43%    passed     49.58%
+ 163  Hs_WNT8B                   61.66%    passed      5.81%
+ 164  Bf_XP_002610991.1          61.55%    passed     66.84%
+ 165  Pa_g14762.t1               69.05%    passed     94.01%
+ 166  La_919000079               61.20%    passed     96.62%
+ 167  Pc_957858747               61.08%    passed     81.71%
+ 168  Xb_g12093.t1               79.84%    failed      0.72%
+ 169  Sk_269785053               60.73%    passed     36.82%
+ 170  c_hem_XLOC_002938          59.09%    failed      0.16%
+ 171  Ad_XP_015752567.1          75.50%    passed     55.04%
+ 172  Of_1176116488              60.73%    passed     26.68%
+ 173  Pd_XP_027047106.1          60.84%    passed     61.34%
+ 174  Pd_XP_027036366.1          74.33%    failed      1.86%
+ 175  Pd_XP_027036395.1          66.47%    passed     41.21%
+ 176  Pd_XP_027036360.1          65.30%    passed     14.44%
+ 177  Pd_XP_027036377.1          64.24%    passed     69.60%
+ 178  Hv_449678238               59.44%    passed     11.32%
+ 179  a_aur_scaffold298.g9.t2    73.62%    passed     55.20%
+ 180  m_vir_scaffold536.g7.t1    67.17%    passed     81.31%
+ 181  Pd_XP_027036394.1          60.84%    passed     48.44%
+ 182  d_gig_g8669.t1             74.44%    passed     62.13%
+ 183  Of_1176066669              70.93%    passed     16.98%
+ 184  Of_1176066687              61.20%    passed     25.85%
+ 185  Ad_XP_015763191.1          61.08%    passed     93.93%
+ 186  Of_1176116637              67.17%    passed     86.26%
+ 187  Of_1176116698              78.08%    passed     10.37%
+ 188  Pd_XP_027053042.1          60.84%    passed     52.75%
+ 189  Pd_XP_027053295.1          60.38%    passed     30.90%
+ 190  Of_1176080939              60.96%    passed     35.51%
+ 191  Pd_XP_027036390.1          61.31%    passed     84.11%
+ 192  Ad_XP_015762746.1          60.38%    passed     53.57%
+ 193  Ad_XP_015762754.1          61.43%    passed     14.85%
+ 194  Of_1176080931              60.96%    passed     24.28%
+ 195  Of_1176080836              61.66%    passed     88.71%
+ 196  Pd_XP_027036368.1          61.20%    passed     83.47%
+ 197  Sp_115901760               67.17%    passed     88.32%
+ 198  Hs_LOC102724183            86.28%    failed      0.21%
+ 199  Sk_269785055               60.26%    passed     58.43%
+ 200  Bf_XP_002598627.1          61.55%    passed     99.51%
+ 201  Hs_WNT9A                   61.20%    passed     27.12%
+ 202  Hs_WNT9B                   61.66%    failed      1.03%
+ 203  c_hem_XLOC_015404          58.15%    passed      9.74%
+ 204  Hv_221122965               60.38%    passed     21.27%
+ 205  a_aur_scaffold25.g69.t1    88.75%    failed      0.60%
+ 206  a_aur_scaffold25.g68.t1    67.06%    passed     98.15%
+ 207  m_vir_scaffold1708.g1.t1   80.77%    passed     96.82%
+ 208  m_vir_scaffold120.g27.t1   78.08%    passed     32.05%
+ 209  m_vir_scaffold120.g23.t1   60.61%    passed     48.78%
+ 210  d_gig_g12411.t1            76.55%    passed     50.65%
+ 211  Ci_198422608               58.03%    passed     92.88%
+ 212  Pc_957821472               59.55%    passed     83.39%
+ 213  Dm_Wnt10                   49.36%    passed     70.67%
+ 214  Ct_ELT95359.1              60.96%    passed     97.78%
+ 215  Hs_WNT10B                  80.66%    failed      0.09%
+ 216  Bf_XP_002598506.1          72.10%    failed      3.40%
+ 217  Pa_g13362.t1               60.61%    passed     96.19%
+ 218  La_919077758               60.38%    passed     86.64%
+ 219  La_919077778               78.08%    passed     11.95%
+ 220  Cg_762145195               61.20%    passed     96.80%
+ 221  Ac_524909465               59.91%    passed     99.01%
+ 222  m_lei_ML01051a             59.55%    passed     93.59%
+ 223  sb_3462483_                70.34%    failed      0.33%
+ 224  c_hem_XLOC_006909          59.91%    passed     16.37%
+ 225  Ep_XP_020898370.1          67.64%    passed     14.85%
+ 226  Nv_NVE12517                60.84%    passed     92.16%
+ 227  Nv_NVE23768                60.73%    passed     42.66%
+ 228  Nv_NVE4456                 85.70%    failed      3.26%
+ 229  Ep_XP_020898335.1          62.02%    passed     40.14%
+ 230  Ep_XP_020898355.1          62.37%    passed     25.16%
+ 231  Nv_NVE2845                 77.96%    passed     24.09%
+ 232  Nv_NVE2850                 76.91%    passed     22.79%
+ 233  Nv_NVE2846                 77.14%    passed     13.18%
+ 234  Nv_NVE2847                 85.81%    failed      2.89%
+ 235  Nv_NVE2851                 84.53%    failed      0.88%
+ 236  Nv_NVE2843                 84.88%    failed      1.90%
+ 237  Nv_NVE912                  79.72%    passed     23.28%
+ 238  Nv_NVE2848                 67.29%    passed     71.65%
+ 239  Nv_NVE2849                 83.59%    passed     11.03%
+ 240  Nv_NVE2842                 67.29%    passed     73.71%
+ 241  Nv_NVE2844                 83.00%    passed     10.68%
+ 242  Nv_NVE1783                 61.66%    passed     99.59%
+ 243  Of_1176096399              87.34%    failed      2.82%
+ 244  Ad_XP_015751349.1          60.38%    passed     97.62%
+ 245  Pd_XP_027056914.1          60.14%    passed     97.41%
+ 246  Ta_XP_002108223.1          65.30%    passed     20.23%
+ 247  c_hem_XLOC_015382          58.15%    passed     51.30%
+ 248  Aq_NP_001292181.1          61.55%    passed     58.23%
+ 249  c_hem_XLOC_045775          60.14%    failed      0.53%
+ 250  Ad_XP_015760765.1          58.50%    passed     69.79%
+ 251  Of_1176096607              58.62%    passed     98.18%
+ 252  Pd_XP_027056895.1          58.50%    passed     92.03%
+ 253  Ep_XP_020904200.1          58.26%    passed     97.94%
+ 254  Nv_NVE1780                 58.85%    passed     95.94%
+ 255  Nv_NVE20298                77.02%    passed     86.11%
+ 256  c_hem_XLOC_041060          57.33%    passed     42.32%
+ 257  Hv_221101247               64.01%    failed      0.44%
+ 258  a_aur_scaffold12.g80.t1    60.73%    passed     43.13%
+ 259  Hv_221117263               60.38%    passed     20.53%
+ 260  Ci_74136741                74.68%    passed     36.35%
+ 261  Aq_XP_003384323.1          61.90%    failed      0.15%
+ 262  a_aur_scaffold122.g30.t1   59.32%    passed     86.67%
+ 263  Aq_NP_001266204.1          58.26%    failed      2.19%
+ 264  c_hem_XLOC_031686          59.79%    passed     60.93%
+ 265  a_aur_scaffold33.g64.t1    61.31%    passed     96.90%
+ 266  m_vir_scaffold12.g86.t1    61.31%    passed     91.96%
+ 267  Ta_XP_002116099.1          88.63%    failed      2.36%
+ 268  p_nak_g5173.t1             78.66%    passed     56.36%
+ 269  Bf_XP_002609873.1          60.61%    passed     99.61%
+ 270  Pa_g4991.t1                61.78%    passed     76.41%
+ 271  m_vir_scaffold383.g9.t1    89.21%    failed      1.97%
+ 272  Pc_957829593               61.43%    passed     86.64%
+ 273  La_919045136               61.43%    passed     34.53%
+ 274  La_919096882               61.43%    passed     37.42%
+ 275  Pc_957860499               68.82%    passed     95.46%
+ 276  Ct_ELU04026.1              62.60%    passed     90.05%
+ 277  Pa_g18101.t1               60.49%    passed     99.89%
+ 278  La_919022621               60.49%    passed     99.58%
+ 279  Ac_871236807               60.49%    passed     63.52%
+ 280  Cg_762164767               60.38%    passed     99.34%
+ 281  Ac_524870527               61.43%    passed     93.20%
+ 282  Cg_762141774               61.31%    passed     16.44%
+ 283  Ct_ELU01968.1              64.71%    passed     80.71%
+ 284  Sk_269785077               60.61%    passed     93.01%
+ 285  Hs_WNT5A                   60.61%    passed     96.26%
+ 286  Hs_WNT5B                   60.61%    passed     85.88%
+ 287  Bf_XP_002597279.1          60.26%    passed     95.71%
+ 288  Pc_957847274               89.92%    passed     37.01%
+ 289  Ep_XP_020904179.1          61.43%    passed     34.43%
+ 290  d_gig_g8670.t1             60.26%    passed     90.76%
+ 291  Ci_118343946               52.17%    failed      0.02%
+ 292  m_vir_scaffold18.g46.t1    61.90%    passed     19.69%
+ 293  Ad_XP_015753686.1          60.61%    passed     99.10%
+ 294  Of_1176121725              60.73%    passed     99.79%
+ 295  Pd_XP_027043512.1          60.96%    passed     99.12%
+ 296  Ep_XP_020913046.1          60.84%    passed     70.39%
+ 297  Nv_NVE4013                 61.20%    passed     41.59%
+ 298  Pc_957821392               63.31%    passed     48.94%
+ 299  d_gig_g20156.t1            65.06%    passed     69.22%
+ 300  d_gig_g28184.t1            60.49%    passed     81.87%
+ 301  d_gig_g30725.t1            60.49%    passed     81.87%
+ 302  Ce_egl-20                  58.50%    passed     99.23%
+ 303  Sp_72136290                61.31%    passed     87.86%
+ 304  m_vir_scaffold327.g6.t2    74.79%    passed     15.83%
+ 305  a_aur_scaffold119.g40.t1   60.26%    passed     99.97%
+ 306  d_gig_g27482.t1            69.40%    passed     34.65%
+ 307  Ci_198429421               58.97%    passed     58.87%
+ 308  Sk_284005183               61.08%    passed     34.34%
+ 309  Ct_ELT87681.1              59.91%    passed     95.19%
+ 310  Ta_XP_002116098.1          88.98%    failed      2.24%
+ 311  Pa_g12416.t1               76.67%    passed     68.29%
+ 312  Hs_WNT7A                   60.61%    passed     94.09%
+ 313  Hs_WNT7B                   60.61%    passed     85.66%
+ 314  Sp_390346016               60.14%    passed     95.65%
+ 315  Sk_269785051               60.49%    passed     90.37%
+ 316  Bf_XP_002597288.1          60.61%    passed     95.39%
+ 317  Xb_g10601.t1               60.61%    passed     79.66%
+ 318  Ct_ELU03126.1              59.91%    passed     53.24%
+ 319  Cg_762116145               60.61%    passed     99.46%
+ 320  Ac_871259004               60.38%    passed     79.92%
+ 321  Ac_524895487               77.61%    passed     50.84%
+ 322  Hv_828195360               84.76%    failed      0.14%
+ 323  Sp_390355306               57.80%    passed     10.72%
+ 324  Hs_WNT16                   59.79%    passed     99.80%
+ 325  Bf_XP_002599799.1          60.26%    passed     86.59%
+ 326  Sk_585693557               61.08%    passed     93.08%
+ 327  Pc_957856751               60.49%    passed     75.36%
+ 328  Cg_762170497               60.61%    passed     84.49%
+ 329  La_919022635               60.73%    passed     47.35%
+ 330  Ac_871214129               60.84%    passed     44.09%
+ 331  Ce_cwn-2                   60.14%    passed     98.38%
+ 332  Xb_g3360.t1                60.84%    passed     88.28%
+ 333  Ce_cwn-1                   58.38%    passed     79.85%
+ 334  m_vir_scaffold383.g6.t1    65.42%    passed     34.67%
+ 335  Ci_699246636               56.15%    failed      4.05%
+ 336  Of_1176078059              59.79%    passed     82.27%
+ 337  Pd_XP_027040481.1          59.79%    passed     96.14%
+ 338  Dm_Wnt2                    59.32%    passed     24.08%
+ 339  Ct_ELT95360.1              61.90%    passed     85.52%
+ 340  Sp_390337139               59.79%    passed     36.55%
+ 341  Sk_291244845               60.84%    passed     18.96%
+ 342  Xb_g10402.t1               60.49%    passed     39.37%
+ 343  Ci_74136035                60.73%    passed     45.68%
+ 344  Pa_g12298.t1               60.49%    passed     97.36%
+ 345  Xb_g3363.t1                58.85%    passed      9.81%
+ 346  Cg_762144077               76.55%    passed     86.01%
+ 347  Nv_NVE24195                78.55%    passed     73.85%
+ 348  Ac_871217779               56.39%    passed     85.83%
+ 349  Hs_WNT10A                  55.33%    failed      0.00%
+ 350  Dm_Wnt5                    76.32%    passed      9.85%
+ 351  Ep_XP_020916616.1          60.61%    passed     98.34%
+ 352  Nv_NVE17746                60.73%    passed     58.40%
+ 353  Ad_XP_015754603.1          60.49%    passed     12.24%
+ 354  Pa_g17239.t1               59.79%    passed     47.88%
+ 355  La_919022641               59.91%    passed     68.26%
+ 356  Ad_XP_015754600.1          60.73%    passed     41.23%
+ 357  Ad_XP_015759292.1          59.91%    passed     63.53%
+ 358  Pd_XP_027053052.1          59.79%    passed     92.32%
+ 359  Ad_XP_015754594.1          60.61%    passed     71.68%
+ 360  Pd_XP_027057346.1          60.49%    passed     99.44%
+ 361  La_919077788               70.69%    passed     94.60%
+ 362  Ep_XP_020904195.1          61.31%    passed     71.90%
+ 363  Of_1176060953              60.61%    passed     97.40%
+ 364  Of_1176115542              61.66%    passed     89.22%
+ 365  Bf_XP_002598508.1          80.66%    passed     33.16%
+ 366  Of_1176115415              78.55%    passed     62.45%
+ 367  a_aur_scaffold86.g32.t1    68.00%    passed     90.59%
+ 368  Ep_XP_020904196.1          80.66%    passed     50.44%
+ 369  Ad_XP_015764912.1          58.97%    passed     87.75%
+ 370  Ad_XP_015750729.1          79.02%    passed     87.41%
+ 371  Of_1176060957              79.37%    passed     96.93%
+ 372  La_919077790               73.27%    passed     91.46%
+ 373  La_919077756               61.08%    passed     42.96%
+ 374  La_919075297               68.11%    passed     60.11%
+ 375  Cg_762145225               77.49%    passed     43.02%
+ 376  Pc_957861843               67.76%    passed     86.60%
+ 377  Sp_72153594                60.61%    passed     95.15%
+ 378  Sp_780024491               89.68%    failed      4.38%
+WARNING: 376 sequences contain more than 50% gaps/ambiguity
+****  TOTAL                      64.54%  45 sequences failed composition chi2 test (p-value<5%; df=19)
+
+
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.581 seconds
+NOTE: ModelFinder requires 448 MB RAM!
+ModelFinder will test 26 protein models (sample size: 853) ...
+ No. Model         -LnL         df  AIC          AICc         BIC
+  1  LG            171625.227   753 344756.454   356226.393   348332.270
+  2  LG+I          166840.955   754 335189.910   346807.665   338770.474
+  3  LG+G4         158267.741   754 318043.481   329661.237   321624.046
+  4  LG+I+G4       157895.900   755 317301.801   329070.461   320887.114
+  5  LG+R2         161316.690   755 324143.379   335912.039   327728.693
+  6  LG+R3         159085.757   757 319685.513   331765.640   323280.324
+  7  LG+R4         158410.574   759 318339.148   330744.310   321943.457
+  8  LG+R5         157977.837   761 317477.674   330222.334   321091.480
+  9  LG+R6         157803.578   763 317133.156   330232.752   320756.460
+ 10  LG+R7         157662.365   765 316854.730   330325.765   320487.531
+ 11  LG+R8         157563.688   767 316661.376   330521.517   320303.675
+ 12  LG+R9         157504.115   769 316546.231   330814.423   320198.027
+ 13  LG+R10        157455.681   771 316453.362   331149.955   320114.656
+ 14  LG+F          174879.363   772 351302.727   366221.627   354968.769
+ 15  LG+F+I        170165.641   773 341877.282   357024.169   345548.074
+ 16  LG+F+G4       161590.937   773 324727.874   339874.760   328398.665
+ 17  LG+F+I+G4     161236.426   774 324020.853   339401.622   327696.393
+ 18  LG+F+R2       164674.053   774 330896.106   346276.875   334571.646
+ 19  LG+F+R3       162315.277   776 326182.554   342049.712   329867.592
+ 20  LG+F+R4       161617.163   778 324790.326   341170.380   328484.861
+ 21  LG+F+R5       161127.837   780 323815.674   340737.341   327519.707
+ 22  LG+F+R6       161006.744   782 323577.487   341071.944   327291.017
+ 23  LG+F+R7       160917.378   784 323402.755   341503.932   327125.783
+ 24  LG+F+R8       160850.416   786 323272.832   342017.741   327005.357
+ 25  LG+F+R9       160806.803   788 323189.607   342618.732   326931.629
+ 26  LG+F+R10      160770.309   790 323120.618   343278.360   326872.138
+Akaike Information Criterion:           LG+R10
+Corrected Akaike Information Criterion: LG+I+G4
+Bayesian Information Criterion:         LG+R10
+Best-fit model: LG+R10 chosen according to BIC
+
+All model information printed to my_data/my_hmmsearch_tree/wnt_hmmsearch_env_coord_tree.model.gz
+CPU time for ModelFinder: 3689.017 seconds (1h:1m:29s)
+Wall-clock time for ModelFinder: 476.327 seconds (0h:7m:56s)
+
+NOTE: 448 MB RAM (0 GB) is required!
+Estimate model parameters (epsilon = 0.100)
+1. Initial log-likelihood: -157681.049
+2. Current log-likelihood: -157570.431
+3. Current log-likelihood: -157512.626
+4. Current log-likelihood: -157482.334
+5. Current log-likelihood: -157466.111
+6. Current log-likelihood: -157459.702
+7. Current log-likelihood: -157457.757
+8. Current log-likelihood: -157457.173
+Optimal log-likelihood: -157457.027
+Site proportion and rates:  (0.084,0.035) (0.026,0.117) (0.053,0.218) (0.040,0.308) (0.066,0.427) (0.066,0.576) (0.052,0.799) (0.131,0.980) (0.155,1.267) (0.328,1.640)
+Parameters optimization took 8 rounds (54.750 sec)
+Computing ML distances based on estimated model parameters... 137.190 sec
+Computing BIONJ tree...
+0.195 seconds
+Log-likelihood of BIONJ tree: -160653.835
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Generating 98 parsimony trees... 48.458 second
+Computing log-likelihood of 98 initial trees ... 76.973 seconds
+Current best score: -157457.027
+
+Do NNI search on 20 best initial trees
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 1: -157003.940
+Iteration 10 / LogL: -157178.200 / Time: 0h:5m:37s
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 16: -156991.685
+Iteration 20 / LogL: -157172.902 / Time: 0h:7m:56s
+Finish initializing candidate tree set (20)
+Current best tree score: -156991.685 / CPU time: 397.522
+Number of iterations: 20
+--------------------------------------------------------------------
+|               OPTIMIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 23: -156894.198
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 25: -156859.495
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 26: -156847.853
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 29: -156835.171
+Iteration 30 / LogL: -156844.496 / Time: 0h:10m:32s (0h:36m:0s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 39: -156830.703
+Iteration 40 / LogL: -156845.021 / Time: 0h:12m:25s (0h:31m:33s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 42: -156829.761
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 43: -156811.043
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 47: -156806.966
+Iteration 50 / LogL: -156809.697 / Time: 0h:14m:26s (0h:28m:34s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 51: -156790.701
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 57: -156783.120
+Iteration 60 / LogL: -156795.516 / Time: 0h:16m:28s (0h:27m:5s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 65: -156774.779
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 69: -156771.997
+Iteration 70 / LogL: -156818.179 / Time: 0h:18m:21s (0h:26m:20s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 79: -156767.158
+Iteration 80 / LogL: -156784.679 / Time: 0h:20m:7s (0h:25m:13s left)
+Iteration 90 / LogL: -156770.764 / Time: 0h:21m:50s (0h:21m:50s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 91: -156764.509
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 96: -156761.628
+Iteration 100 / LogL: -156775.801 / Time: 0h:23m:44s (0h:23m:1s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 110: -156757.625
+Iteration 110 / LogL: -156757.625 / Time: 0h:25m:31s (0h:23m:25s left)
+Iteration 120 / LogL: -156780.125 / Time: 0h:27m:3s (0h:20m:27s left)
+Iteration 130 / LogL: -156769.603 / Time: 0h:28m:36s (0h:17m:44s left)
+Iteration 140 / LogL: -156777.870 / Time: 0h:30m:10s (0h:15m:11s left)
+Iteration 150 / LogL: -156783.407 / Time: 0h:31m:46s (0h:12m:47s left)
+Iteration 160 / LogL: -156790.265 / Time: 0h:33m:25s (0h:10m:30s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 168: -156750.023
+Iteration 170 / LogL: -156759.613 / Time: 0h:35m:9s (0h:20m:23s left)
+Iteration 180 / LogL: -156758.242 / Time: 0h:36m:48s (0h:18m:5s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 187: -156748.818
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 188: -156746.259
+Iteration 190 / LogL: -156772.702 / Time: 0h:38m:48s (0h:20m:7s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 193: -156733.767
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 197: -156732.598
+Iteration 200 / LogL: -156759.492 / Time: 0h:40m:34s (0h:19m:46s left)
+Iteration 210 / LogL: -156734.717 / Time: 0h:42m:17s (0h:17m:36s left)
+Iteration 220 / LogL: -156754.049 / Time: 0h:43m:59s (0h:15m:28s left)
+Iteration 230 / LogL: -156740.571 / Time: 0h:45m:35s (0h:13m:20s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 233: -156730.919
+Iteration 240 / LogL: -156736.825 / Time: 0h:47m:24s (0h:18m:26s left)
+Iteration 250 / LogL: -156759.571 / Time: 0h:49m:11s (0h:16m:23s left)
+Iteration 260 / LogL: -156734.320 / Time: 0h:50m:54s (0h:14m:21s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 265: -156728.606
+Iteration 270 / LogL: -156730.759 / Time: 0h:52m:44s (0h:18m:37s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 277: -156725.107
+Iteration 280 / LogL: -156765.375 / Time: 0h:54m:32s (0h:18m:57s left)
+Iteration 290 / LogL: -156740.772 / Time: 0h:56m:10s (0h:16m:54s left)
+Iteration 300 / LogL: -156740.282 / Time: 0h:57m:46s (0h:14m:52s left)
+Iteration 310 / LogL: -156772.513 / Time: 0h:59m:24s (0h:12m:52s left)
+Iteration 320 / LogL: -156739.831 / Time: 1h:1m:9s (0h:10m:55s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 325: -156724.831
+Iteration 330 / LogL: -156781.812 / Time: 1h:2m:51s (0h:18m:9s left)
+Iteration 340 / LogL: -156775.546 / Time: 1h:4m:23s (0h:16m:8s left)
+Iteration 350 / LogL: -156745.149 / Time: 1h:6m:1s (0h:14m:11s left)
+Iteration 360 / LogL: -156780.188 / Time: 1h:7m:42s (0h:12m:15s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 363: -156723.856
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 366: -156720.042
+Iteration 370 / LogL: -156793.596 / Time: 1h:9m:39s (0h:18m:7s left)
+Iteration 380 / LogL: -156723.053 / Time: 1h:11m:20s (0h:16m:11s left)
+Iteration 390 / LogL: -156736.861 / Time: 1h:12m:56s (0h:14m:14s left)
+Iteration 400 / LogL: -156741.390 / Time: 1h:14m:36s (0h:12m:20s left)
+Iteration 410 / LogL: -156732.020 / Time: 1h:16m:27s (0h:10m:28s left)
+Iteration 420 / LogL: -156723.820 / Time: 1h:18m:10s (0h:8m:34s left)
+Iteration 430 / LogL: -156766.455 / Time: 1h:19m:53s (0h:6m:42s left)
+Iteration 440 / LogL: -156729.332 / Time: 1h:21m:37s (0h:4m:50s left)
+Iteration 450 / LogL: -156765.580 / Time: 1h:23m:22s (0h:2m:58s left)
+Iteration 460 / LogL: -156741.891 / Time: 1h:25m:7s (0h:1m:6s left)
+TREE SEARCH COMPLETED AFTER 467 ITERATIONS / Time: 1h:26m:16s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -156720.042
+2. Current log-likelihood: -156720.021
+Optimal log-likelihood: -156720.009
+Site proportion and rates:  (0.083,0.033) (0.026,0.118) (0.057,0.219) (0.045,0.334) (0.062,0.440) (0.063,0.586) (0.040,0.792) (0.138,0.958) (0.166,1.265) (0.321,1.648)
+Parameters optimization took 2 rounds (2.523 sec)
+BEST SCORE FOUND : -156720.009
+Total tree length: 308.278
+
+Total number of iterations: 467
+CPU time used for tree search: 39467.864 sec (10h:57m:47s)
+Wall-clock time used for tree search: 5097.143 sec (1h:24m:57s)
+Total CPU time used: 40103.679 sec (11h:8m:23s)
+Total wall-clock time used: 5178.688 sec (1h:26m:18s)
+
+Analysis results written to: 
+  IQ-TREE report:                my_data/my_hmmsearch_tree/wnt_hmmsearch_env_coord_tree.iqtree
+  Maximum-likelihood tree:       my_data/my_hmmsearch_tree/wnt_hmmsearch_env_coord_tree.treefile
+  Likelihood distances:          my_data/my_hmmsearch_tree/wnt_hmmsearch_env_coord_tree.mldist
+  Screen log file:               my_data/my_hmmsearch_tree/wnt_hmmsearch_env_coord_tree.log
+
+Date and Time: Fri Jul 30 09:36:55 2021
