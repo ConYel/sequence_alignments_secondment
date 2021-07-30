@@ -285,7 +285,6 @@ check the sign_seqs_msa_muscle.fa file for the alignments
 docker run --rm -ti -v $(pwd):/home/my_data staphb/iqtree
 
 cd home
-mkdir my_data/my_hmmsearch_tree
 
 iqtree -s my_data/hmmsearch_msa_muscle.fa -nt 8 -mset LG -pre my_data/my_hmmsearch_tree/my_hmmsearch_tree
 
@@ -293,4 +292,131 @@ iqtree -s my_data/hmmsearch_env_coord_msa_muscle.fa -nt 8 -mset LG -pre my_data/
 
 ```
 
+# wnt Family
+## HMMER:hmmsearch
+```{bash}
+docker run --rm -ti -v $(pwd):/home/my_data  staphb/hmmer
+cd ..
+cd home
 
+hmmsearch --cut_ga --domtblout my_data/hmm_search/wnt_domtbl.out my_data/wnt.hmm my_data/oma_db > /dev/null
+```
+
+## Import hmmsearch results into R
+```{r}
+second_line_fields <- c("target_name", "accession_1", "tlen", "query_name",
+                        "accession_2", "qlen",   "E-value_full_seq", "score_full_seq",
+                        "bias_full_seq",
+                        "this_domain_#",  "of_this_domain",  "c-Evalue_this_domain",
+                        "i-Evalue_this_domain",  "score_this_domain", "bias_this_domain", 
+                        "from_hmm_coord", "to_hmm_coord", "from_ali_coord", "to_ali_coord", 
+                        "from_env_coord", "to_env_coord", "acc", "description_of_target")
+
+wnt_hmmsearch <- data.table::fread(cmd = "grep -v '^#' hmm_search/wnt_domtbl.out | awk -v OFS='\t'  '{for(i=1;i<=23;i++) printf $i\"\t\"; print \"\"}'",  header = FALSE, sep = "\t",  fill=TRUE)
+
+names(wnt_hmmsearch)[1:23] <- second_line_fields
+```
+
+## Multiple Sequence Alignment
+```{r}
+# filter for the hmmsearch env_coord sequences
+fasta_db_fil_with_len <- fasta_db[names_fst_db %in% wnt_hmmsearch$target_name]
+
+fasta_db_fil_with_len <- fasta_db_fil_with_len[sort(names(fasta_db_fil_with_len))]
+
+wnt_hmmsearch <- wnt_hmmsearch %>% 
+  filter(!duplicated(target_name)) %>% 
+  select(target_name, from_env_coord, to_env_coord) %>% 
+  arrange(target_name)
+
+#fasta_db_fil_with_len %>% head %>% Biostrings::as.list() %>% Biostrings::AAStringSet()
+fasta_db_fil_with_len <- pmap(list(fasta_db_fil_with_len %>% as.list, 
+          wnt_hmmsearch %>% select(target_name, from_env_coord) %>% deframe %>% as.list(),
+          wnt_hmmsearch %>% select(target_name, to_env_coord) %>% deframe %>% as.list()),
+     subseq) %>% Biostrings::AAStringSet()
+```
+
+## perform MSA with MUSCLE hmmsearch
+```{r}
+## env_coord
+hmmsearch_env_coord_muscle <- msaMuscle(fasta_db_fil_with_len)
+hmmsearch_env_coord_bio2mds <- msa::msaConvert(hmmsearch_env_coord_muscle, type = "bios2mds::align")
+export.fasta(hmmsearch_env_coord_bio2mds, outfile = "wnt_hmmsearch_env_coord_msa_muscle.fa", ncol = 60, open = "w")
+```
+check the sign_seqs_msa_muscle.fa file for the alignments
+
+## IQTREE hmmsearch
+```{bash}
+docker run --rm -ti -v $(pwd):/home/my_data staphb/iqtree
+
+cd home
+
+iqtree -s my_data/wnt_hmmsearch_env_coord_msa_muscle.fa -nt 8 -mset LG -pre my_data/my_hmmsearch_tree/wnt_hmmsearch_env_coord_tree
+
+```
+
+# WIF Family
+## HMMER:hmmsearch
+```{bash}
+docker run --rm -ti -v $(pwd):/home/my_data  staphb/hmmer
+
+cd home
+
+hmmsearch --cut_ga --domtblout my_data/hmm_search/WIF_domtbl.out my_data/WIF.hmm my_data/oma_db > /dev/null
+```
+
+## Import hmmsearch results into R
+```{r}
+second_line_fields <- c("target_name", "accession_1", "tlen", "query_name",
+                        "accession_2", "qlen",   "E-value_full_seq", "score_full_seq",
+                        "bias_full_seq",
+                        "this_domain_#",  "of_this_domain",  "c-Evalue_this_domain",
+                        "i-Evalue_this_domain",  "score_this_domain", "bias_this_domain", 
+                        "from_hmm_coord", "to_hmm_coord", "from_ali_coord", "to_ali_coord", 
+                        "from_env_coord", "to_env_coord", "acc", "description_of_target")
+
+WIF_hmmsearch <- data.table::fread(cmd = "grep -v '^#' hmm_search/WIF_domtbl.out | awk -v OFS='\t'  '{for(i=1;i<=23;i++) printf $i\"\t\"; print \"\"}'",  header = FALSE, sep = "\t",  fill=TRUE)
+
+names(WIF_hmmsearch)[1:23] <- second_line_fields
+```
+
+## Multiple Sequence Alignment
+```{r}
+# filter for the hmmsearch env_coord sequences
+fasta_db_fil_with_len <- fasta_db[names_fst_db %in% WIF_hmmsearch$target_name]
+
+fasta_db_fil_with_len <- fasta_db_fil_with_len[sort(names(fasta_db_fil_with_len))]
+
+WIF_hmmsearch <- WIF_hmmsearch %>% 
+  filter(!duplicated(target_name)) %>% 
+  select(target_name, from_env_coord, to_env_coord) %>% 
+  arrange(target_name)
+
+identical(fasta_db_fil_with_len %>% names %>% str_remove(" .+"),
+          WIF_hmmsearch$target_name)
+
+#fasta_db_fil_with_len %>% head %>% Biostrings::as.list() %>% Biostrings::AAStringSet()
+fasta_db_fil_with_len <- pmap(list(fasta_db_fil_with_len %>% as.list, 
+          WIF_hmmsearch %>% select(target_name, from_env_coord) %>% deframe %>% as.list(),
+          WIF_hmmsearch %>% select(target_name, to_env_coord) %>% deframe %>% as.list()),
+     subseq) %>% Biostrings::AAStringSet()
+```
+
+## perform MSA with MUSCLE hmmsearch
+```{r}
+## env_coord
+hmmsearch_env_coord_muscle <- msaMuscle(fasta_db_fil_with_len, type = "protein")
+hmmsearch_env_coord_bio2mds <- msa::msaConvert(hmmsearch_env_coord_muscle, type = "bios2mds::align")
+export.fasta(hmmsearch_env_coord_bio2mds, outfile = "WIF_hmmsearch_env_coord_msa_muscle.fa", ncol = 60, open = "w")
+```
+check the sign_seqs_msa_muscle.fa file for the alignments
+
+## IQTREE hmmsearch
+```{bash}
+docker run --rm -ti -v $(pwd):/home/my_data staphb/iqtree
+
+cd home
+
+iqtree -s my_data/WIF_hmmsearch_env_coord_msa_muscle.fa -nt 4 -mset LG -pre my_data/my_hmmsearch_tree/WIF_hmmsearch_env_coord_tree
+
+```
