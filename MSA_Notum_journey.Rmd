@@ -448,7 +448,17 @@ hmmbuild --amino --cpu 4  my_data/WIF_try my_data/WIF_hmmsearch_env_coord_msa_mu
 hmmbuild --amino --cpu 4  my_data/wnt_try my_data/wnt_hmmsearch_env_coord_msa_muscle.fa 
 ```
 
+# hmmscan WIF proteins in pfam domains
+## export the WIF sequences from oma.db
+```{r}
+fasta_db_fil_with_len %>% Biostrings::writeXStringSet("WIF_oma_seq.fasta")
+```
+
+
 ```{bash}
-hmmsearch --cut_ga --domtblout my_data/hmm_search/NOTUM_profile_domtbl.out my_data/NOTUM_try my_data/pfam/Pfam-A.fasta > /dev/null
+hmmpress my_data/pfam/Pfam-A.hmm
+
+hmmscan --cut_ga --domtblout my_data/hmm_search/WIF_profile_domtbl.out my_data/pfam/Pfam-A.hmm my_data/WIF_oma_seq.fasta > /dev/null
+
 ```
 
