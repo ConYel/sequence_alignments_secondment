@@ -461,4 +461,18 @@ hmmpress my_data/pfam/Pfam-A.hmm
 hmmscan --cut_ga --domtblout my_data/hmm_search/WIF_profile_domtbl.out my_data/pfam/Pfam-A.hmm my_data/WIF_oma_seq.fasta > /dev/null
 
 ```
+## Import hmmscan results into R
+```{r}
+second_line_fields <- c("target_name", "accession_1", "tlen", "query_name",
+                        "accession_2", "qlen",   "E-value_full_seq", "score_full_seq",
+                        "bias_full_seq",
+                        "this_domain_#",  "of_this_domain",  "c-Evalue_this_domain",
+                        "i-Evalue_this_domain",  "score_this_domain", "bias_this_domain", 
+                        "from_hmm_coord", "to_hmm_coord", "from_ali_coord", "to_ali_coord", 
+                        "from_env_coord", "to_env_coord", "acc", "description_of_target_1",
+                        "description_of_target_2","description_of_target_3")
 
+WIF_hmmscan <- data.table::fread(cmd = "grep -v '^#' hmm_search/WIF_profile_domtbl.out | awk -v OFS='\t'  '{for(i=1;i<=29;i++) printf $i\"\t\"; print \"\"}'",  header = FALSE, sep = "\t",  fill=TRUE)
+
+names(WIF_hmmscan)[1:25] <- second_line_fields
+```
