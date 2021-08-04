@@ -475,4 +475,12 @@ second_line_fields <- c("target_name", "accession_1", "tlen", "query_name",
 WIF_hmmscan <- data.table::fread(cmd = "grep -v '^#' hmm_search/WIF_profile_domtbl.out | awk -v OFS='\t'  '{for(i=1;i<=29;i++) printf $i\"\t\"; print \"\"}'",  header = FALSE, sep = "\t",  fill=TRUE)
 
 names(WIF_hmmscan)[1:25] <- second_line_fields
+
+WIF_hmmscan %>% 
+  distinct(target_name, query_name) %>% 
+  pivot_wider(names_from = target_name, values_from = target_name,values_fill = "0") %>% 
+  unite(col = "domains",2:11) %>% 
+  mutate(domains = domains %>% str_remove_all("0_") %>% str_remove_all("_0"),
+         query_name = query_name %>% str_replace("\\|","_")) %>% 
+  unite(query_name, 1:2, sep = "__DOMAIN__") %>% view()
 ```
