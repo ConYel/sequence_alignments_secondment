@@ -502,7 +502,7 @@ CDKANCSTTCFNGGTCFYPGKCICPPGLEGEQCEISKCPQPCRNGGKCIGKSKCKCSKGYQGDLCSKPVCEPGCGAHGTC
 HEPNKCQCQEGWHGRHCNKRYEASLIHALRPAGAQLRQHTPSLKKAEERRDPPESNYIW
 ```
 
-### Hs|RYK
+### Hs|RYK (picle Rick)
 ```{bash}
 >Hs|RYK gi|54607020|ref|NP_001005861.1| gi|54607020|ref|NP_001005861.1| tyrosine-protein kinase RYK isoform 1 precursor [Homo sapiens]
 MRGAARLGRPGRSCLPGARGLRAPPPPPLLLLLALLPLLPAPGAAAAPAPRPPELQSASAGPSVSLYLSEDEVRRLIGLD
@@ -536,4 +536,61 @@ KLKESPGLVSGIFGSGSTKYEQVSTQDLVEMAIQIACGMTYLSKRGLVHKDLAARNCVIDRDLKVKISDNALSRDAFPAD
 YCCLGDNENRPVRWLGLESLVHKVYSSASDVWSFGVLLWELQSLAATPYADIDDFEMASYLKDGFRLSQPINCPDHLYSI
 IASCWHYSPDQRPSFTKLLQMLTEFYAELEVYV
 ```
+## Results:
+### Hs|WIF1 vs Halisarca caerulea comp25790_c0_seq1 transcribed RNA sequence
+```{bash}
+>Hc|comp25790
+CQRAECIPGCLNGGTCAGPNWCRCARGWSGNRCRRAVCIPACNNGGKCTAPNTCECAEGWTGNQCQRPVCDSECLNGGIC
+AAPNTCQCSSGWSGDHCDLPVCRPKCTNGGICIRPSKCLCDSSWTGKRCQKPVCRPGCENGGTCTEPNTCQCTSGWSGDR
+C
+```
+### Hs|WIF1 vs Halichondria panicea TRINITY_DN792_c2_g1_i4, transcribed RNA sequence
+```{bash}
+>Hp|TRINITY_DN792_c2_g1_i4
+CENGGICTQERTCHCAPGYEGPLCEEAVCFPPCTNGGNCTAPGFCECPREWEGIRCEDPGCSPSCENGGTCIRPGECYCT
+PQWTGDNCQDAICNPPCGNGGHCISPGHCECGGTGFLGSRCTEAVCKPACENGGECVEPNVCQCLSLWTGNYCDT
+```
+### Hs|WIF1 vs Aplysina aerophoba TR173969_c0_g2_i1 transcribed RNA sequence
+```{bash}
+>Ae|TR173969_c0_g2_i1
+RRCRKAICNEPCRNGGTCTAPNVCACADGYMGQLCEVPVCSRECQNGGICIGKDECQCEMGYSGLHCESAICTDSCMNGG
+TCVEPETCTCPANYTGRVCSEPVCIRPCLNVGQCTGPGVCTCTAEFTGDLCEVPICLDPCLNGGYCSAPNVCTCEDGYEG
+HNC
+```
+### Hs|WIF1 vs Leucetta chagosensis breed sponge isolate calcarea TRINITY_DN9568_c1_g1_i1, transcribed RNA sequence
+```{bash}
+>Lc|TRINITY_DN9568_c1_g1_i1
+PKSAWTGSRCQTPVCLPSCQNGGQCVSPQTCSCAAGYTGSSCGNAVCSTSCKNGGSCVSPNKCSCPAGYTGSYCEKAVCS
+TSCRNGGSCVRPNTCSCPAGYTGSYCEKAVCSTSCQNGGSCVRPNTCSCPAGYTGSYCEKAVCSTSCKNGGSCVSPNTCS
+CPAGYTGSYCEK
+```
 
+```{bash}
+hmmpress my_data/pfam/Pfam-A.hmm
+
+hmmscan --cut_ga --domtblout my_data/hmm_search/WIF_profile_HS_WIF1vssponges_domtbl.out my_data/pfam/Pfam-A.hmm my_data/Hs_WIF1vs_sponges.fasta > /dev/null
+```
+
+## Import hmmscan of WIF1 vs sponges results into R
+```{r}
+second_line_fields <- c("target_name", "accession_1", "tlen", "query_name",
+                        "accession_2", "qlen",   "E-value_full_seq", "score_full_seq",
+                        "bias_full_seq",
+                        "this_domain_#",  "of_this_domain",  "c-Evalue_this_domain",
+                        "i-Evalue_this_domain",  "score_this_domain", "bias_this_domain", 
+                        "from_hmm_coord", "to_hmm_coord", "from_ali_coord", "to_ali_coord", 
+                        "from_env_coord", "to_env_coord", "acc", "description_of_target_1",
+                        "description_of_target_2","description_of_target_3")
+
+WIF_hmmscan <- data.table::fread(cmd = "grep -v '^#' hmm_search/WIF_profile_HS_WIF1vssponges_domtbl.out | awk -v OFS='\t'  '{for(i=1;i<=29;i++) printf $i\"\t\"; print \"\"}'",  header = FALSE, sep = "\t",  fill=TRUE)
+
+names(WIF_hmmscan)[1:25] <- second_line_fields
+
+WIF_hmmscan %>% 
+  distinct(target_name, query_name) %>% 
+  pivot_wider(names_from = target_name, values_from = target_name,values_fill = "0") %>% 
+  unite(col = "domains",2:11) %>% 
+  mutate(domains = domains %>% str_remove_all("0_") %>% str_remove_all("_0"),
+         query_name = query_name %>% str_replace("\\|","_")) %>% 
+  unite(query_name, 1:2, sep = "__DOMAIN__") %>% view()
+```
