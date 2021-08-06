@@ -1,0 +1,21 @@
+#                                                                                    --- full sequence --- -------------- this domain -------------   hmm coord   ali coord   env coord
+# target name        accession   tlen query name                   accession   qlen   E-value  score  bias   #  of  c-Evalue  i-Evalue  score  bias  from    to  from    to  from    to  acc description of target
+#------------------- ---------- -----         -------------------- ---------- ----- --------- ------ ----- --- --- --------- --------- ------ ----- ----- ----- ----- ----- ----- ----- ---- ---------------------
+PK_Tyr_Ser-Thr       PF07714.19   259 Hp|TRINITY_DN396839_c0_g1_i1 -            227   1.2e-65  221.5   0.1   1   1   1.4e-69   1.3e-65  221.3   0.1    52   259     2   216     1   216 0.97 Protein tyrosine and serine/threonine kinase
+Pkinase              PF00069.27   264 Hp|TRINITY_DN396839_c0_g1_i1 -            227   8.3e-25   87.7   0.0   1   1   1.1e-28     1e-24   87.5   0.0    51   258     4   212     1   218 0.84 Protein kinase domain
+PK_Tyr_Ser-Thr       PF07714.19   259 Cs|TRINITY_DN14054_c0_g1_i1 -            557   4.3e-65  219.7   0.0   1   1   8.5e-69   5.4e-65  219.3   0.0     2   257   280   544   279   546 0.96 Protein tyrosine and serine/threonine kinase
+Pkinase              PF00069.27   264 Cs|TRINITY_DN14054_c0_g1_i1 -            557   1.3e-24   87.1   0.0   1   1   2.8e-28   1.8e-24   86.6   0.0     6   258   284   542   279   545 0.82 Protein kinase domain
+PK_Tyr_Ser-Thr       PF07714.19   259 Hp|TRINITY_DN874_c0_g1_i3 -            331   1.7e-67  227.6   0.0   1   1     2e-71     2e-67  227.3   0.0     3   257    49   318    47   320 0.96 Protein tyrosine and serine/threonine kinase
+Pkinase              PF00069.27   264 Hp|TRINITY_DN874_c0_g1_i3 -            331   8.2e-25   87.8   0.0   1   1   1.2e-28   1.1e-24   87.3   0.0     9   258    55   316    48   319 0.75 Protein kinase domain
+PK_Tyr_Ser-Thr       PF07714.19   259 Da|TR158463_c0_g1_i1 -            319   7.3e-69  232.0   0.0   1   1   9.9e-73   9.5e-69  231.6   0.0     1   256    37   305    37   308 0.96 Protein tyrosine and serine/threonine kinase
+Pkinase              PF00069.27   264 Da|TR158463_c0_g1_i1 -            319   5.4e-25   88.4   0.0   1   1   7.5e-29   7.2e-25   87.9   0.0     5   258    41   304    37   307 0.80 Protein kinase domain
+#
+# Program:         hmmscan
+# Version:         3.3 (Nov 2019)
+# Pipeline mode:   SCAN
+# Query file:      my_data/Ci_198430807_vs_sponges.fasta
+# Target file:     my_data/pfam/Pfam-A.hmm
+# Option settings: hmmscan --domtblout my_data/hmm_search/WIF_profile_Ci_198430807vssponges_domtbl.out --cut_ga my_data/pfam/Pfam-A.hmm my_data/Ci_198430807_vs_sponges.fasta 
+# Current dir:     /home
+# Date:            Thu Aug  5 18:47:17 2021
+# [ok]

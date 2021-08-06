@@ -594,3 +594,178 @@ WIF_hmmscan %>%
          query_name = query_name %>% str_replace("\\|","_")) %>% 
   unite(query_name, 1:2, sep = "__DOMAIN__") %>% view()
 ```
+
+
+### Hs|RYK vs Halichondria panicea TRINITY_DN396839_c0_g1_i1, transcribed RNA sequence
+```{bash}
+>Hp|TRINITY_DN396839_c0_g1_i1
+ESCLMKGFCHQNVNPILGACMENEKQPLLVYAYSTEGNLKKFLQRCKMSEMASSYALSTQQLVYIAIQIIRGVQYLHRKR
+VVHRDVATRNCVIDHQLNVKVTDTALSRDLFPNDYHCLGDNENRPVKWLAIEALLDRHFTPASDVWSFGVTMWELMTLGQ
+QPYADVDPFEMATYLKEGYRIAQPINCPDELFSVMACCWSMLGEERPKLTQLQACLQDFYTALGRFI
+```
+
+### Hs|RYK vs Cymbastela stipitata TRINITY_DN14054_c0_g1_i1, transcribed RNA sequence
+```{bash}
+>Cs|TRINITY_DN14054_c0_g1_i1
+NIASVGAVATTDFSISFPCTNTLQGRADVRVTLNFTFDFTGGTLRSLVGQVFTMTGTRVCNCTNSRCDNTEPPNDGGVNN
+EIFYIVIGCVGGVILLVIMVTVLYHCIMLGMWVKRRSQDEEPLPNIEDVIPMPPYPMVTITPLSSQVPIAPLPNSPRNSF
+SVPSDLSKSLRSLQSFKDLIVDRKRISIGQVLKEGVFGVMYDGYLSNAEDDVEGAIPVIIKTVKDNTPDIVVKSLLEGGG
+ATRAVSHRHVLPLLAAHVSDTEQPMLLFPKTSLGTLKGLLMRCREPKRGVSLTLTTQNLVFIAGQISRGMYHLTRKGLIH
+RDLAARNIYVHENLHVKIGDRGLSWDLFPSEYSRLPDGEMCPIRWMSAEVLSERKYSHYSDVWSFGVVLWELMTLGRIPY
+EEVPAEDMLAMLTAGHRLSQPKNCPDELFVLMGWCWALTPTDRPRFSHLTLRLKEFHEKINAFV
+```
+
+### Hs|RYK vs Neopetrosia compacta breed sponge isolate demosponge TRINITY_DN1516_c3_g1_i2, transcribed RNA sequence
+```{bash}
+>Nc|TRINITY_DN1516_c3_g1_i2
+RDVFVDRKRIQFGCKITEGVFGVMYDGYLTNAEDDVEGAVPVIIKTVKDNTPDVVVKSLLEGGSATRGVSHRHLLPLLAA
+HASDLEQPMLLFPKTAHGSLKSLLLCSRGAQRVIPGSPFLTTQDLVFMAEQVARGMYHLTRKGLVHKDLAARNIYVHENL
+HVKIGDRGLCWDFFPSEYSTLEGDQELIASPIRWMAAEVIAEKKYSHYSDVWAFGVVLWEIMTKGKIPYEDVLPEQMYSY
+LTYGSRLQQPKNCPDDLFSLMGWCWALTPGDRPRFSHLTIRLKEFHERLGAFI
+```
+
+### Hs|RYK vs Dysidea avara TR158463_c0_g1_i1 transcribed RNA sequence
+```{bash}
+>Da|TR158463_c0_g1_i1
+MKDILVDKNRIQLGELIKEGTYGRMYEGYLANTEDDVEGSVSIIVKTVSDITPDQVVASLVDGCLVLRHIQHRHILQALG
+VYSNEQEPVMVLLARTTFGTLKQFLDDIRLQGGPQSSYGKLLLTQDMVFISAQIARGMYHLSRKGGIIHKDLAARNIYIH
+ENLHVKIGDRGLSWDFYPDDYQVTPNGEYVPVKWASVEVLEEQQYSMYSDVWAFGVVLWEIMTVGLVPYDSVTPNELVDY
+LKSGQRLTRPTNCPDDMFSIMGQCWALTPTDRPKFSHLTVGLDHFHLRLNSYI
+```
+
+```{bash}
+hmmpress my_data/pfam/Pfam-A.hmm
+
+hmmscan --cut_ga --domtblout my_data/hmm_search/WIF_profile_HS_RYKvssponges_domtbl.out my_data/pfam/Pfam-A.hmm my_data/Hs_RYKvs_sponges.fasta > /dev/null
+```
+
+## Import hmmscan of WIF1 vs sponges results into R
+```{r}
+second_line_fields <- c("target_name", "accession_1", "tlen", "query_name",
+                        "accession_2", "qlen",   "E-value_full_seq", "score_full_seq",
+                        "bias_full_seq",
+                        "this_domain_#",  "of_this_domain",  "c-Evalue_this_domain",
+                        "i-Evalue_this_domain",  "score_this_domain", "bias_this_domain", 
+                        "from_hmm_coord", "to_hmm_coord", "from_ali_coord", "to_ali_coord", 
+                        "from_env_coord", "to_env_coord", "acc", "description_of_target_1",
+                        "description_of_target_2","description_of_target_3")
+
+WIF_hmmscan <- data.table::fread(cmd = "grep -v '^#' hmm_search/WIF_profile_HS_RYKvssponges_domtbl.out | awk -v OFS='\t'  '{for(i=1;i<=29;i++) printf $i\"\t\"; print \"\"}'",  header = FALSE, sep = "\t",  fill=TRUE)
+
+names(WIF_hmmscan)[1:25] <- second_line_fields
+
+WIF_hmmscan %>% 
+  distinct(target_name, query_name) %>% 
+  pivot_wider(names_from = target_name, values_from = target_name,values_fill = "0") %>% 
+  unite(col = "domains",2:11) %>% 
+  mutate(domains = domains %>% str_remove_all("0_") %>% str_remove_all("_0"),
+         query_name = query_name %>% str_replace("\\|","_")) %>% 
+  unite(query_name, 1:2, sep = "__DOMAIN__") %>% view()
+```
+
+About Of|1176102141 we got only one result:
+### Of|1176102141 vs Cymbastela stipitata TRINITY_DN17682_c0_g1_i1, transcribed RNA sequence
+```{bash}
+>Cs|TRINITY_DN17682_c0_g1_i1
+LPPLPSSVDEISISWHASEEVIYELHVGQDPQGVFEDPRLNIPENGTIPRNKTAFSISFPC
+```
+
+```{bash}
+touch my_data/Of1176102141_vs_sponges.fasta
+
+hmmscan --cut_ga --domtblout my_data/hmm_search/WIF_profile_Of1176102141vssponges_domtbl.out my_data/pfam/Pfam-A.hmm my_data/Of1176102141_vs_sponges.fasta > /dev/null
+```
+
+## Import hmmscan of WIF1 vs sponges results into R
+```{r}
+second_line_fields <- c("target_name", "accession_1", "tlen", "query_name",
+                        "accession_2", "qlen",   "E-value_full_seq", "score_full_seq",
+                        "bias_full_seq",
+                        "this_domain_#",  "of_this_domain",  "c-Evalue_this_domain",
+                        "i-Evalue_this_domain",  "score_this_domain", "bias_this_domain", 
+                        "from_hmm_coord", "to_hmm_coord", "from_ali_coord", "to_ali_coord", 
+                        "from_env_coord", "to_env_coord", "acc", "description_of_target_1",
+                        "description_of_target_2","description_of_target_3")
+
+WIF_hmmscan <- data.table::fread(cmd = "grep -v '^#' hmm_search/WIF_profile_Of1176102141vssponges_domtbl.out | awk -v OFS='\t'  '{for(i=1;i<=29;i++) printf $i\"\t\"; print \"\"}'",  header = FALSE, sep = "\t",  fill=TRUE)
+
+names(WIF_hmmscan)[1:25] <- second_line_fields
+
+WIF_hmmscan %>% 
+  distinct(target_name, query_name) %>% 
+  pivot_wider(names_from = target_name, values_from = target_name,values_fill = "0") %>% 
+  unite(col = "domains",2:11) %>% 
+  mutate(domains = domains %>% str_remove_all("0_") %>% str_remove_all("_0"),
+         query_name = query_name %>% str_replace("\\|","_")) %>% 
+  unite(query_name, 1:2, sep = "__DOMAIN__") %>% view()
+```
+
+### Ci|198430807 vs Halichondria panicea TRINITY_DN396839_c0_g1_i1, transcribed RNA sequence
+```{bash}
+>Hp|TRINITY_DN396839_c0_g1_i1
+ESCLMKGFCHQNVNPILGACMENEKQPLLVYAYSTEGNLKKFLQRCKMSEMASSYALSTQQLVYIAIQIIRGVQYLHRKR
+VVHRDVATRNCVIDHQLNVKVTDTALSRDLFPNDYHCLGDNENRPVKWLAIEALLDRHFTPASDVWSFGVTMWELMTLGQ
+QPYADVDPFEMATYLKEGYRIAQPINCPDELFSVMACCWSMLGEERPKLTQLQACLQDFYTALGRFI
+```
+
+### Ci|198430807 vs Cymbastela stipitata TRINITY_DN14054_c0_g1_i1, transcribed RNA sequence
+```{bash}
+>Cs|TRINITY_DN14054_c0_g1_i1
+LCLRAVWVLLALYRCVCALDWFIPAAEVQRIEGEENAPALYLVRQSVVQRSTLPLSETAMNTRVMFSWAGSGLAYQFKSV
+SSNPAVLMGAEFENIASVGAVATTDFSISFPCTNTLQGRADVRVTLNFTFDFTGGTLRSLVGQVFTMTGTRVCNCTNSRC
+DNTEPPNDGGVNNEIFYIVIGCVGGVILLVIMVTVLYHCIMLGMWVKRRSQDEEPLPNIEDVIPMPPYPMVTITPLSSQV
+PIAPLPNSPRNSFSVPSDLSKSLRSLQSFKDLIVDRKRISIGQVLKEGVFGVMYDGYLSNAEDDVEGAIPVIIKTVKDNT
+PDIVVKSLLEGGGATRAVSHRHVLPLLAAHVSDTEQPMLLFPKTSLGTLKGLLMRCREPKRGVSLTLTTQNLVFIAGQIS
+RGMYHLTRKGLIHRDLAARNIYVHENLHVKIGDRGLSWDLFPSEYSRLPDGEMCPIRWMSAEVLSERKYSHYSDVWSFGV
+VLWELMTLGRIPYEEVPAEDMLAMLTAGHRLSQPKNCPDELFVLMGWCWALTPTDRPRFSHLTLRLKEFHEKINAFV
+```
+
+### Ci|198430807 vs Halichondria panicea TRINITY_DN874_c0_g1_i3, transcribed RNA sequence
+```{bash}
+>Hp|TRINITY_DN874_c0_g1_i3
+LTTDMPVSDLKSSPRHSHSSISVPPALNNSLRNLHSFRDLFVHRKRISIGVVLTEGVFGVIYDGYLSNAEDDVEGVTPVI
+IKTVKDNTPEIVVRSLLEGGAALRHVPHRHLLPLLACHASDSEQPMLLFPKTALGTLKTVLLRTRDNKTTPGGSQKGALA
+LSTQNLVMVAAQISRGMYHLTKKGLTHRDLAARNIYIHQNLHVRIGDRGLSWDLYPEEYSQMPDGEMCPVKWMAAEVLTD
+RNYSHYSDVWSFGVVLWEIMTLGKIPYSENTAEEMVALLTAGQRLSQPKNCPDDLFVLMGWCWALTPTDRPRFSHLTLRL
+KEFHEKICSFV
+```
+
+### Ci|198430807 vs Dysidea avara TR158463_c0_g1_i1 transcribed RNA sequence
+```{bash}
+>Da|TR158463_c0_g1_i1
+SLKPAVDGSLAVLTAELNKSVHSLFSMKDILVDKNRIQLGELIKEGTYGRMYEGYLANTEDDVEGSVSIIVKTVSDITP
+DQVVASLVDGCLVLRHIQHRHILQALGVYSNEQEPVMVLLARTTFGTLKQFLDDIRLQGGPQSSYGKLLLTQDMVFISAQ
+IARGMYHLSRKGGIIHKDLAARNIYIHENLHVKIGDRGLSWDFYPDDYQVTPNGEYVPVKWASVEVLEEQQYSMYSDVWA
+FGVVLWEIMTVGLVPYDSVTPNELVDYLKSGQRLTRPTNCPDDMFSIMGQCWALTPTDRPKFSHLTVGLDHFHLRLNSYI
+```
+
+```{bash}
+touch my_data/Ci_198430807_vs_sponges.fasta
+
+hmmscan --cut_ga --domtblout my_data/hmm_search/WIF_profile_Ci_198430807vssponges_domtbl.out my_data/pfam/Pfam-A.hmm my_data/Ci_198430807_vs_sponges.fasta > /dev/null
+```
+
+
+## Import hmmscan of WIF1 vs sponges results into R
+```{r}
+second_line_fields <- c("target_name", "accession_1", "tlen", "query_name",
+                        "accession_2", "qlen",   "E-value_full_seq", "score_full_seq",
+                        "bias_full_seq",
+                        "this_domain_#",  "of_this_domain",  "c-Evalue_this_domain",
+                        "i-Evalue_this_domain",  "score_this_domain", "bias_this_domain", 
+                        "from_hmm_coord", "to_hmm_coord", "from_ali_coord", "to_ali_coord", 
+                        "from_env_coord", "to_env_coord", "acc", "description_of_target_1",
+                        "description_of_target_2","description_of_target_3")
+
+WIF_hmmscan <- data.table::fread(cmd = "grep -v '^#' hmm_search/WIF_profile_Ci_198430807vssponges_domtbl.out | awk -v OFS='\t'  '{for(i=1;i<=29;i++) printf $i\"\t\"; print \"\"}'",  header = FALSE, sep = "\t",  fill=TRUE)
+
+names(WIF_hmmscan)[1:25] <- second_line_fields
+
+WIF_hmmscan %>% 
+  distinct(target_name, query_name) %>% 
+  pivot_wider(names_from = target_name, values_from = target_name,values_fill = "0") %>% 
+  unite(col = "domains",2:11) %>% 
+  mutate(domains = domains %>% str_remove_all("0_") %>% str_remove_all("_0"),
+         query_name = query_name %>% str_replace("\\|","_")) %>% 
+  unite(query_name, 1:2, sep = "__DOMAIN__") %>% view()
+```

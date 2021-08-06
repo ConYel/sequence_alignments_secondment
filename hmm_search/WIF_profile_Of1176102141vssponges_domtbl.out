@@ -1,0 +1,14 @@
+#                                                                                   --- full sequence --- -------------- this domain -------------   hmm coord   ali coord   env coord
+# target name        accession   tlen query name                  accession   qlen   E-value  score  bias   #  of  c-Evalue  i-Evalue  score  bias  from    to  from    to  from    to  acc description of target
+#------------------- ---------- -----        -------------------- ---------- ----- --------- ------ ----- --- --- --------- --------- ------ ----- ----- ----- ----- ----- ----- ----- ---- ---------------------
+WIF                  PF02019.20   131 Cs|TRINITY_DN17682_c0_g1_i1 -             61   9.5e-12   44.9   0.0   1   1   5.3e-16     1e-11   44.8   0.0    35    96     2    61     1    61 0.96 WIF domain
+#
+# Program:         hmmscan
+# Version:         3.3 (Nov 2019)
+# Pipeline mode:   SCAN
+# Query file:      my_data/Of1176102141_vs_sponges.fasta
+# Target file:     my_data/pfam/Pfam-A.hmm
+# Option settings: hmmscan --domtblout my_data/hmm_search/WIF_profile_Of1176102141vssponges_domtbl.out --cut_ga my_data/pfam/Pfam-A.hmm my_data/Of1176102141_vs_sponges.fasta 
+# Current dir:     /home
+# Date:            Thu Aug  5 18:19:31 2021
+# [ok]
