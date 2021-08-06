@@ -767,8 +767,18 @@ WIF_hmmscan %>%
 # Remake the WIF tree
 We will use some sequences from sponges with the previous sequences
 
-## import the new sequences
+## import the  sequences
 ```{r}
+suppressPackageStartupMessages({
+library(Biostrings)
+  })
+# import the oma_db first (we will filter it after)
+fasta_db <- readAAStringSet("oma_db")
+fasta_db <- fasta_db[sort(names(fasta_db))]
+
+names_fst_db <- fasta_db  %>% names %>% str_remove(" .+")
+
+# import the sponges
 seq_sponges <- readAAStringSet("WIF_sponge.fasta")
 ```
 
@@ -792,52 +802,18 @@ names(WIF_hmmsearch)[1:23] <- second_line_fields
 # filter for the hmmsearch env_coord sequences
 fasta_db_fil_with_len <- fasta_db[names_fst_db %in% WIF_hmmsearch$target_name]
 
-WIF_hmmsearch <- WIF_hmmsearch %>% 
-  filter(!duplicated(target_name)) %>% 
-  select(target_name, from_env_coord, to_env_coord) %>% 
-  arrange(target_name)
-
-identical(fasta_db_fil_with_len %>% names %>% str_remove(" .+"),
-          WIF_hmmsearch$target_name)
-
-fasta_db_fil_with_len <- pmap(list(fasta_db_fil_with_len %>% as.list, 
-          WIF_hmmsearch %>% select(target_name, from_env_coord) %>% deframe %>% as.list(),
-          WIF_hmmsearch %>% select(target_name, to_env_coord) %>% deframe %>% as.list()),
-     subseq) %>% Biostrings::AAStringSet()
-
 # cat the two files
 fasta_db_fil_with_len_sponges <- c(fasta_db_fil_with_len,seq_sponges) %>% 
-  writeXStringSet("WIF_and_sponges_sequences.fasta")
+  writeXStringSet("WIF_complete_seq_and_sponges_sequences.fasta")
 ```
 
-## perform Multiple Sequence Alignment with MUSCLE hmmsearch
-```{r}
-## env_coord
-hmmsearch_env_coord_muscle <- msaMuscle(fasta_db_fil_with_len_sponges, type = "protein")
-hmmsearch_env_coord_bio2mds <- msa::msaConvert(hmmsearch_env_coord_muscle, type = "bios2mds::align")
-export.fasta(hmmsearch_env_coord_bio2mds, outfile = "WIFtree_withsponges_hmmsearch_env_coord_msa_muscle.fa", ncol = 60, open = "w")
-```
-
-## IQTREE hmmsearch
+## find domains in order to properly rename the sequences
+### search the domains
 ```{bash}
-docker run --rm -ti -v $(pwd):/home/my_data staphb/iqtree
-
-cd home
-
-iqtree -s my_data/WIFtree_withsponges_hmmsearch_env_coord_msa_muscle.fa -nt 4 -mset LG -pre my_data/my_hmmsearch_tree/WIFtree_withsponges_hmmsearch_env_coord_tree
+hmmscan --cut_ga --domtblout my_data/hmm_search/WIF_Sponges_domains_domtbl.out my_data/pfam/Pfam-A.hmm my_data/WIF_complete_seq_and_sponges_sequences.fasta > /dev/null
 ```
 
-## search which domains these sponges sequences have
-```{bash}
-hmmscan --cut_ga --domtblout my_data/hmm_search/Sponges_domains_domtbl.out my_data/pfam/Pfam-A.hmm my_data/WIF_sponge.fasta > /dev/null
-```
-
-```{bash}
-hmmscan --cut_ga --domtblout my_data/hmm_search/WIF_Sponges_domains_domtbl.out my_data/pfam/Pfam-A.hmm my_data/WIF_and_sponges_sequences.fasta > /dev/null
-```
-
-
-## Import the hmmscan with the domains
+### Import the hmmscan with the domains
 ```{r}
 second_line_fields <- c("target_name", "accession_1", "tlen", "query_name",
                         "accession_2", "qlen",   "E-value_full_seq", "score_full_seq",
@@ -851,13 +827,47 @@ second_line_fields <- c("target_name", "accession_1", "tlen", "query_name",
 WIF_sponges_hmmscan <- data.table::fread(cmd = "grep -v '^#' hmm_search/WIF_Sponges_domains_domtbl.out | awk -v OFS='\t'  '{for(i=1;i<=29;i++) printf $i\"\t\"; print \"\"}'",  header = FALSE, sep = "\t",  fill=TRUE)
 
 names(WIF_sponges_hmmscan)[1:25] <- second_line_fields
+```
 
-WIF_sponges_hmmscan %>% 
+### change the names 
+```{r}
+new_names <- WIF_sponges_hmmscan %>% 
   distinct(target_name, query_name) %>% 
   pivot_wider(names_from = target_name, values_from = target_name,values_fill = "0") %>% 
-  unite(col = "domains",2:4) %>% 
+  unite(col = "domains",2:11) %>% 
   mutate(domains = domains %>% str_remove_all("0_") %>% str_remove_all("_0"),
          query_name = query_name %>% str_replace("\\|","_")) %>% 
   mutate(query_name_1 = query_name) %>% 
-  unite(query_name, 1:2, sep = "__DOMAIN__") %>% view()
+  unite(query_name, 1:2, sep = "__DOMAIN__") 
+
+identical(str_remove(names(fasta_db_fil_with_len_sponges)," .+") %>% str_replace("\\|","_"),new_names$query_name_1)
+
+names(fasta_db_fil_with_len_sponges) <- new_names$query_name
 ```
+
+## perform Multiple Sequence Alignment with MUSCLE hmmsearch
+```{r}
+## env_coord
+hmmsearch_env_coord_muscle <- msaMuscle(fasta_db_fil_with_len_sponges, type = "protein")
+
+hmmsearch_env_coord_bio2mds <- msa::msaConvert(hmmsearch_env_coord_muscle, type = "bios2mds::align")
+export.fasta(hmmsearch_env_coord_bio2mds, outfile = "WIFtree_withsponges_hmmsearch_env_coord_msa_muscle.fa", ncol = 60, open = "w")
+```
+
+## IQTREE hmmsearch
+```{bash}
+docker run --rm -ti -v $(pwd):/home/my_data staphb/iqtree
+
+cd home
+
+iqtree -s my_data/WIFtree_withsponges_hmmsearch_env_coord_msa_muscle.fa -nt 4 -mset LG -pre my_data/my_hmmsearch_tree/WIFtree_withsponges_hmmsearch_env_coord_tree
+```
+
+## search which domains these sponges sequences have against pfam
+```{bash}
+hmmscan --cut_ga --domtblout my_data/hmm_search/Sponges_domains_domtbl.out my_data/pfam/Pfam-A.hmm my_data/WIF_sponge.fasta > /dev/null
+```
+
+
+
+
